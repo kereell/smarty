@@ -1,4 +1,0 @@
-smarty
-======
-
-Test Task

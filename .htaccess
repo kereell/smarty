@@ -2,7 +2,7 @@
 	
 	RewriteEngine on
 	
-	RewriteBase /dev/
+	RewriteBase /smarty/
     
     RewriteRule	^$	www/	[L]
     RewriteRule	(.*) www/$1	[L]
