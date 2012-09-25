@@ -1,0 +1,76 @@
+@CHARSET "UTF-8";
+body{
+	background-color: #CCCCFF;
+	color: #996699;
+}
+.tblWrap{
+	margin: 0 auto;
+	width:700px;
+}
+
+.usrTbl {
+	border-width: 3;
+	border-color: #9933CC;
+	border-style: outset;
+	width: 700px;
+	text-align: center;
+	overflow: scroll;
+}
+	
+.usrTbl th a{
+	background-color: #CC99FF;
+	display:block;
+	text-decoration: none;
+	text-transform: uppercase;
+	color:white;
+}
+	
+.oddTr {
+	background-color: #99CCFF;
+}
+
+.evenTr {
+	background-color: #FFFF66;
+}
+
+.addRcrd a{
+	display: block;
+	background-color: #00CC66;
+	text-align: center;
+	text-transform:uppercase;
+	text-decoration:none;
+	color: white;
+	font-weight: bold;
+	margin: 0 auto;
+	width: 300px;
+	border-width: 3;
+	border-color: #9933CC;
+	border-style: outset;
+
+}
+.email a{
+	display: block;
+	text-decoration: none;
+	color: #996699;
+}
+
+.edtRcrd a {
+	display: block;
+	text-decoration: none;
+	text-align: center;
+	background: url("../img/edit.png") no-repeat;
+	margin: 0 auto;
+	width: 16px;
+}
+
+.rmRcrd a {
+	display: block;
+	text-decoration: none;
+	text-align: center;
+	background: url("../img/remove.png") no-repeat;
+	margin: 0 auto;
+	width: 16px;
+}
+.usrRslt{
+	
+}
