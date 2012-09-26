@@ -1,1 +1,117 @@
 @CHARSET "UTF-8";
+
+body {
+	background-color: #999999;
+	color: #333333;
+	font-family: Verdana;
+	font-size: 14px;
+}
+
+.title {
+	display: block;
+	width: 150px;
+	margin: 10px auto;
+	padding: 5px;
+	text-transform: uppercase;
+	font-weight: bold;
+
+}
+
+.addEditFrm {
+	display: table;
+	width: 390px;
+	margin: 10px auto;
+	border: 3px outset #330033;
+	padding: 7px;
+	background-color: #666666;
+	color: white;
+	font-weight: bold;
+}
+
+.addEditFrm div {
+	display: table-row;
+}
+
+.addEditFrm span, input {
+	float: left;
+	display: table-cell;
+	width: 170px;
+	margin: 7px 5px;
+	font-family: Verdana;
+	font-size: 13px;
+	
+}
+
+.addEditFrm span {
+	text-align: left;
+}
+
+.addEditFrm input {
+	text-align: center;
+}
+
+.addEditFrm #sBtn {
+	margin-right: -170px;
+	width:380px;
+	background-color: #336633;
+	border: 3px outset #330033;
+	text-transform:uppercase;
+	color: white;
+	font-weight: bold;
+	font-family: Verdana;
+	font-size: 14px;
+}
+
+.addEditFrm #sBtn:HOVER {
+	background-color: #669966;
+	cursor: pointer;
+}
+
+.done {
+	float: left;
+	width: 16px;
+	height: 16px;
+	padding: 0;
+	margin: 10px 3px 0;
+	display: block;
+	text-indent: -2000px;
+	overflow: hidden;
+	background: url(../img/done.png) no-repeat;
+}
+
+.error {
+	float: left;
+	width: 16px;
+	height: 16px;
+	padding: 0;
+	margin: 10px 3px 0;
+	display: block;
+	text-indent: -2000px;
+	overflow: hidden;
+	background: url(../img/error.png) no-repeat;
+}
+
+
+/** Data picker **/
+a.dp-choose-date {
+	float: left;
+	width: 16px;
+	height: 16px;
+	padding: 0;
+	margin: 10px 3px 0;
+	display: block;
+	text-indent: -2000px;
+	overflow: hidden;
+	background: url(../img/calendar.png) no-repeat; 
+}
+a.dp-choose-date.dp-disabled {
+	background-position: 0 -20px;
+	cursor: default;
+}
+/* makes the input field shorter once the date picker code
+ * has run (to allow space for the calendar icon
+ */
+input.dp-applied {
+	width: 140px;
+	float: left;
+}

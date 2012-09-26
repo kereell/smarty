@@ -29,7 +29,7 @@ class dBase{
 	
 	protected function db_connect(){
 
-		$this->cd = mysql_connect($this->db_host,$this->db_user,$this->db_pass) or 
+		$this->cd = mysql_connect($this->db_host, $this->db_user, $this->db_pass) or 
 			$this->error('Can\'t connect '.mysql_error($this->cd));
 		
 		if($this->cd){

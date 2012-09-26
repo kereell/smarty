@@ -53,7 +53,7 @@ function callHook() {
 	$urlArray = explode('/', $tmpurl[0]);
 	$controller = $urlArray[0];
 	$action = @$urlArray[1] ? $urlArray[1] : 'index';
-	parse_str($tmpurl[0], $param);
+	parse_str(@$tmpurl[1], $param);
 
 	$controllerName = $controller;
 	$controller = ucwords($controller);
@@ -75,17 +75,19 @@ function callHook() {
 	
 function autoloader($className) {
 	if(!strstr($className, 'Smarty')){
-		 if(file_exists(ROOT.DS.'libraries'.DS.strtolower($className).'.class.php')){
-					require_once(ROOT.DS.'libraries'.DS.strtolower($className).'.class.php');
-					} else if(file_exists(ROOT.DS.'apps'.DS.'controllers'.DS.substr(strtolower($className), 0,-10).'.php')){
-						require_once(ROOT.DS.'apps'.DS.'controllers'.DS.substr(strtolower($className), 0,-10).'.php');
-						} else if (file_exists(ROOT.DS.'apps'.DS.'models'.DS.substr(strtolower($className), 0,-5).'.php')){
-							require_once(ROOT.DS.'apps'.DS.'models'.DS.substr(strtolower($className), 0,-5).'.php');
-							} else {
-								exit('Can\'t load '.$className);
-								}
-			}
-	}
+		if(file_exists(ROOT.DS.'libraries'.DS.strtolower($className).'.class.php')){
+			require_once(ROOT.DS.'libraries'.DS.strtolower($className).'.class.php');
+		} else if(file_exists(ROOT.DS.'apps'.DS.'controllers'.DS.substr(strtolower($className), 0,-10).'.php')){
+				require_once(ROOT.DS.'apps'.DS.'controllers'.DS.substr(strtolower($className), 0,-10).'.php');
+			} else if (file_exists(ROOT.DS.'apps'.DS.'models'.DS.substr(strtolower($className), 0,-5).'.php')){
+					require_once(ROOT.DS.'apps'.DS.'models'.DS.substr(strtolower($className), 0,-5).'.php');
+				} else {
+						exit('Can\'t load '.$className);
+					}				
+	} /* elseif (strstr($className, 'xajax')){
+		
+		 }*/
+}
 	
 setReporting();
 removeMagicQuotes();

@@ -23,12 +23,13 @@
 		<script type="text/javascript" src="{$smarty.const.JS_DIR}jqModal.js"></script>
 			<!-- jQuery Flexgrid Table -->
 		<script type="text/javascript" src="{$smarty.const.JS_DIR}flexigrid.js"></script> 
-			<!-- User Functions -->
-		<script type="text/javascript" src="{$smarty.const.JS_DIR}user.js"></script>
+			<!-- Custom js -->
+		<script type="text/javascript" src="{$smarty.const.JS_DIR}page.js"></script>
 	</head>
 	<body>
+	<div class="title">{$title}</div>
 		<div class="tblWrap">
-		<div class="addRcrd"><a href="/dev/page/add" onclick="return false">Add User</a></div>
+		<div class="addRcrd"><a href="/smarty/page/add" onclick="">Add User</a></div>
 			<table class="usrTbl">
 				<thead>
 					<tr>
@@ -50,15 +51,17 @@
 			   			<td>{$user['lastname']}</td>
 			   			<td class="email">{mailto address="{$user['email']}" encode="javascript"}</td>
 			   			<td>{$user['birthday']}</td>
-			   			<td class="edtRcrd"><a href="/dev/page/edit/?id={$user['id']}" onclick="return false">&nbsp;</a></td>
-			   			<td class="rmRcrd"><a href="/dev/page/remove/?id={$user['id']}" onclick="return false">&nbsp;</a></td>
+			   			<td class="edtRmRcrd">
+				   			<a href="/smarty/page/edit/?id={$user['id']}" class="edtRcrd" onclick="return false">&nbsp;</a>&nbsp;
+				   			<a href="/smarty/page/remove/?id={$user['id']}" class="rmRcrd" onclick="return false">&nbsp;</a>
+				   		</td>
 					</tr>
 				{/foreach}
 				</tbody>
 			</table>
 			<p>&nbsp;</p>
 			<table id="flex1" style="display:none"></table>
-			<table class="ourTbl">
+			<table class="ourTbl" style="display:none">
 			    <thead>
 			    <tr>
 			        <th>ID</th>

@@ -1,28 +1,41 @@
 @CHARSET "UTF-8";
-body{
-	background-color: #CCCCFF;
-	color: #996699;
+body {
+	background-color: #999999;
+	color: #333333;
 }
+
+.title {
+	display: block;
+	width: 150px;
+	margin: 10px auto;
+	padding: 5px;
+	text-transform: uppercase;
+	font-weight: bold;
+
+}
+
 .tblWrap{
-	margin: 0 auto;
+	margin: 10px auto;
 	width:700px;
 }
 
 .usrTbl {
-	border-width: 3;
-	border-color: #9933CC;
-	border-style: outset;
+	border: 3px outset #330033;
 	width: 700px;
 	text-align: center;
-	overflow: scroll;
+	margin: 10px auto;
 }
 	
 .usrTbl th a{
-	background-color: #CC99FF;
+	background-color: #666666;
 	display:block;
 	text-decoration: none;
 	text-transform: uppercase;
 	color:white;
+}
+
+.usrTbl th a:HOVER {
+	background-color: #999999;
 }
 	
 .oddTr {
@@ -35,41 +48,41 @@ body{
 
 .addRcrd a{
 	display: block;
-	background-color: #00CC66;
+	background-color: #336633;
 	text-align: center;
 	text-transform:uppercase;
 	text-decoration:none;
 	color: white;
 	font-weight: bold;
-	margin: 0 auto;
+	margin: 10px auto;
 	width: 300px;
-	border-width: 3;
-	border-color: #9933CC;
-	border-style: outset;
+	border: 3px outset #330033;
 
 }
+
+.addRcrd a:HOVER{
+	background-color: #669966;
+}
+
 .email a{
 	display: block;
 	text-decoration: none;
-	color: #996699;
+	color: #333333;
 }
 
-.edtRcrd a {
-	display: block;
+.edtRmRcrd a{
+	display: inline-block;
 	text-decoration: none;
-	text-align: center;
+	width: 16px;
+	margin: 1px 15px;
+}
+.edtRcrd {
+	
 	background: url("../img/edit.png") no-repeat;
-	margin: 0 auto;
-	width: 16px;
 }
 
-.rmRcrd a {
-	display: block;
-	text-decoration: none;
-	text-align: center;
+.rmRcrd {
 	background: url("../img/remove.png") no-repeat;
-	margin: 0 auto;
-	width: 16px;
 }
 .usrRslt{
 	

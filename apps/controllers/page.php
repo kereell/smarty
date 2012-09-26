@@ -17,7 +17,7 @@ class PageController{
  		$users = $page->getAllUsers();
  			
  			
- 			/** Tpl Data **/
+ 			/** TPL DATA **/
 		$smarty = new SmrtSetup();
 		$smarty->caching = FALSE;
  		$smarty->assign('title', 'List of Users');
@@ -30,13 +30,21 @@ class PageController{
 	}
 	
 	public function add(){
+		
+		$xajax = new XajaxSetup();
+		
 	
 		$smarty = new SmrtSetup();
 		$smarty->caching = FALSE;
  		$smarty->assign('title', 'Add User');
  		$smarty->assign('meta_keys', 'Add User:: Meta Keys');
  		$smarty->assign('meta_desc', 'Add User:: Description');
-		
+ 		$smarty->assign('login', '');
+ 		$smarty->assign('name', '');
+ 		$smarty->assign('lastname', '');
+ 		$smarty->assign('email', '');
+ 		$smarty->assign('birthday', '');
+		$smarty->assign('sBtnVal', 'Add Record');	
 		$smarty->display('add_edit_table.tpl.php');
 	
 	}
@@ -48,7 +56,12 @@ class PageController{
  		$smarty->assign('title', 'Edit User');
  		$smarty->assign('meta_keys', 'Edit User:: Meta Keys');
  		$smarty->assign('meta_desc', 'Edit User:: Description');
-		
+ 		$smarty->assign('login', '');
+ 		$smarty->assign('name', '');
+ 		$smarty->assign('lastname', '');
+ 		$smarty->assign('email', '');
+ 		$smarty->assign('birthday', '');
+		$smarty->assign('sBtnVal', 'Edit Record');	
 		$smarty->display('add_edit_table.tpl.php');
 	
 	}
