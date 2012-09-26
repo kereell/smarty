@@ -1,14 +1,18 @@
 <?php
 class PageModel extends dBase {
 	
-	public function __construct() {
+	public function __construct($db_host,$db_user,$db_pass,$db_name) {
 		
-		parent::__construct(get_cfg_var('zend_developer_cloud.db.host'), 
-				get_cfg_var('zend_developer_cloud.db.username'), 
-				get_cfg_var('zend_developer_cloud.db.password'), 
-				get_cfg_var('zend_developer_cloud.db.name'));
+		if (get_cfg_var('zend_developer_cloud.db.host')){		
+			parent::__construct(get_cfg_var('zend_developer_cloud.db.host'), 
+					get_cfg_var('zend_developer_cloud.db.username'), 
+					get_cfg_var('zend_developer_cloud.db.password'), 
+					get_cfg_var('zend_developer_cloud.db.name'));
+		} else {
+				parent::__construct($db_host, $db_user, $db_pass, $db_name);
+			}
 		
-		}
+	}
 	
 	public function getAllUsers(){
 		
@@ -17,16 +21,5 @@ class PageModel extends dBase {
 		return $this->getResArr();
 		
 	}
-		/* $dsn = sprintf(
-				'mysql:dbname=%s;host=%s',
-				get_cfg_var('zend_developer_cloud.db.name'),
-				get_cfg_var('zend_developer_cloud.db.host')
-		);
-		
-		$db = new PDO(
-				$dsn,
-				get_cfg_var('zend_developer_cloud.db.username'),
-				get_cfg_var('zend_developer_cloud.db.password')
-		); */
 	
-	}
+}

@@ -16,29 +16,29 @@
 			<!-- Style Sheet for jQuery Date Picker -->
 		<link rel="stylesheet" type="text/css" href="{$smarty.const.CSS_DIR}datePicker.css" />
 			<!-- jQuery -->
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 			<!-- jQuery required plugins for Date Picker -->
 		<script type="text/javascript" src="{$smarty.const.JS_DIR}date.js"></script>
-			<!-- jQuery required plugins for Date Picker - Localization -->
-		<script type="text/javascript" src="{$smarty.const.JS_DIR}date_ru_utf8.js"></script>
 			<!-- jQuery Date Picker -->
 		<script type="text/javascript" src="{$smarty.const.JS_DIR}jquery.datePicker.js"></script>
+			<!-- Custom js -->
+		<script type="text/javascript" src="{$smarty.const.JS_DIR}addEdit.js"></script>
 			
 	</head>
 
 	<body>
 	
-		<div>{$title}</div>
+		<div class="title">{$title}</div>
 	
-		<form name="addEditFrm" action="" method="post">
-			<input type="text" id="login" name="login" placeholder="Put Your Login" />
-			<input type="text" id="name" name="name" placeholder="Put Your Name" />
-			<input type="text" id="lastname" name="lastname" placeholder="Put Your Last Name" />
-			<input type="email" id="email" name="email" placeholder="Put Your Email Address" />
-			<input type="password" id="pass" name="pass" placeholder="Put Your Password" />
-			<input type="password" id="rePass" name="rePass" placeholder="Repeat Your Password" />
-			<input type="date" id="birthday" name="birthday" placeholder="Put Your Birthday" />
-			<input type="submit" id="sBtn" name="sBtn" value="{$sBtnVal}" >
+		<form class="addEditFrm" name="addEditFrm" action="" method="post">
+		<div><span>Login</span><input type="text" id="login" name="login" value="{$login}" autocomplete="off" placeholder="Put Your Login" /></div>
+		<div><span>Name</span><input type="text" id="name" name="name" value="{$name}" autocomplete="off" placeholder="Put Your Name" /></div>
+		<div><span>Last Name</span><input type="text" id="lastname" name="lastname" value="{$lastname}" autocomplete="off" placeholder="Put Your Last Name" /></div>
+		<div><span>Email</span><input type="email" id="email" name="email" value="{$email}" autocomplete="off" placeholder="Put Your Email Address" /></div>
+		<div><span>Password</span><input type="password" id="pass" name="pass" autocomplete="off" placeholder="Put Your Password" /></div>
+		<div><span>Re-Enter Password</span><input type="password" id="rePass" name="rePass" autocomplete="off" placeholder="Repeat Your Password" /></div>
+		<div><span>Birthday</span><input type="text" id="birthday" name="birthday" value="{$birthday}" autocomplete="off" placeholder="Put Your Birthday" /></div>
+		<div><input type="submit" id="sBtn" name="sBtn" value="{$sBtnVal}" ></div>
 		</form>
 	</body>
 </html>
