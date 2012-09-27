@@ -1,7 +1,7 @@
 <?php
-require_once(ROOT.DS.'libraries'.DS.'xajax'.DS.'xajax_core'.DS.'xajax.inc.php');
+require_once(XAJAX_DIR.'xajax_core'.DS.'xajax.inc.php');
 
-class XajaxSetup {
+class xajaxSetup {
 	
 	protected $xajax;
 	

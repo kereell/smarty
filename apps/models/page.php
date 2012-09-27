@@ -22,9 +22,9 @@ class PageModel extends dbConnect {
 		
 		try{
 			
-			$this->sth = $this->dbh->prepare('SELECT * FROM `users`');
-			$this->sth->execute();
-			$this->sth->setFetchMode(PDO::FETCH_ASSOC);
+			$sth = $this->dbh->prepare('SELECT * FROM `users`');
+			$sth->execute();
+			$sth->setFetchMode(PDO::FETCH_ASSOC);
 			
 		} catch (PDOException $e){
 				
@@ -32,7 +32,7 @@ class PageModel extends dbConnect {
 				
 			}
 		
-		return $this->sth->fetchAll();
+		return $sth->fetchAll();
 		
 	}
 	
@@ -41,14 +41,14 @@ class PageModel extends dbConnect {
 		
 		try{
 			
-			$this->sth = $this->dbh->prepare('SELECT `login`, `name`, `lastname`, `email`, 
+			$sth = $this->dbh->prepare('SELECT `login`, `name`, `lastname`, `email`, 
 					DATE_FORMAT(`birthday`, "%d-%m-%Y") AS `birthday` FROM `users` WHERE `id`=:id');
 			
-			$this->sth->bindParam(':id', $id, PDO::PARAM_INT);
+			$sth->bindParam(':id', $id, PDO::PARAM_INT);
 			
-			$this->sth->execute();
+			$sth->execute();
 			
-			$this->sth->setFetchMode(PDO::FETCH_ASSOC);
+			$sth->setFetchMode(PDO::FETCH_ASSOC);
 			
 		} catch (PDOException $e){
 			
@@ -56,7 +56,7 @@ class PageModel extends dbConnect {
 				
 			}
 		
-		return $this->sth->fetch();
+		return $sth->fetch();
 		
 	}
 	
@@ -64,17 +64,17 @@ class PageModel extends dbConnect {
 		
 		try{
 			
-			$this->sth = $this->dbh->prepare('INSERT INTO `users` (`login`, `name`, `lastname`, 
+			$sth = $this->dbh->prepare('INSERT INTO `users` (`login`, `name`, `lastname`, 
 					`email`, `pass`, `birthday`) VALUES (:login, :name, :lastname, :email, :pass, :birthday)');
 			
-			$this->sth->bindParam(':login', $this->validLogin($data['login']), PDO::PARAM_STR);
-			$this->sth->bindParam(':name', $this->validName($data['name']), PDO::PARAM_STR);
-			$this->sth->bindParam(':lastname', $this->validName($data['lastname']), PDO::PARAM_STR);
-			$this->sth->bindParam(':email', $this->validEmail($data['email']), PDO::PARAM_STR);
-			$this->sth->bindParam(':pass', $this->validPasswd($data['pass']));
-			$this->sth->bindParam(':birthday', $this->validBirth($data['birthday']), PDO::PARAM_STR);
+			$sth->bindParam(':login', $this->validLogin($data['login']), PDO::PARAM_STR);
+			$sth->bindParam(':name', $this->validName($data['name']), PDO::PARAM_STR);
+			$sth->bindParam(':lastname', $this->validName($data['lastname']), PDO::PARAM_STR);
+			$sth->bindParam(':email', $this->validEmail($data['email']), PDO::PARAM_STR);
+			$sth->bindParam(':pass', $this->validPasswd($data['pass']));
+			$sth->bindParam(':birthday', $this->validBirth($data['birthday']), PDO::PARAM_STR);
 			
-			$this->sth->execute();
+			$sth->execute();
 		
 		} catch (PDOException $e){
 
@@ -90,18 +90,18 @@ class PageModel extends dbConnect {
 		
 		try{
 			
-			$this->sth = $this->dbh->prepare('UPDATE `users` SET `login`=:login, `name`=:name, 
+			$sth = $this->dbh->prepare('UPDATE `users` SET `login`=:login, `name`=:name, 
 					`lastname`=:lastname, `email`=:email, `pass`=:pass, `birthday`=:birthday WHERE `id`=:id');
 			
-			$this->sth->bindParam(':id', $id, PDO::PARAM_INT);
-			$this->sth->bindParam(':login', $this->validLogin($data['login']), PDO::PARAM_STR);
-			$this->sth->bindParam(':name', $this->validName($data['name']), PDO::PARAM_STR);
-			$this->sth->bindParam(':lastname', $this->validName($data['lastname']), PDO::PARAM_STR);
-			$this->sth->bindParam(':email', $this->validEmail($data['email']), PDO::PARAM_STR);
-			$this->sth->bindParam(':pass', $this->validPasswd($data['pass']));
-			$this->sth->bindParam(':birthday', $this->validBirth($data['birthday']), PDO::PARAM_STR);
+			$sth->bindParam(':id', $id, PDO::PARAM_INT);
+			$sth->bindParam(':login', $this->validLogin($data['login']), PDO::PARAM_STR);
+			$sth->bindParam(':name', $this->validName($data['name']), PDO::PARAM_STR);
+			$sth->bindParam(':lastname', $this->validName($data['lastname']), PDO::PARAM_STR);
+			$sth->bindParam(':email', $this->validEmail($data['email']), PDO::PARAM_STR);
+			$sth->bindParam(':pass', $this->validPasswd($data['pass']));
+			$sth->bindParam(':birthday', $this->validBirth($data['birthday']), PDO::PARAM_STR);
 			
-			$affected = $this->sth->execute();
+			$affected = $sth->execute();
 			
 		} catch (PDOException $e){
 			
@@ -116,11 +116,11 @@ class PageModel extends dbConnect {
 		
 		try {
 			
-			$this->sth = $this->dbh->prepare('DELETE FROM `users` WHERE `id`=:id');
+			$sth = $this->dbh->prepare('DELETE FROM `users` WHERE `id`=:id');
 			
-			$this->sth->bindParam(':id', $id, PDO::PARAM_INT);
+			$sth->bindParam(':id', $id, PDO::PARAM_INT);
 			
-			$affected = $this->sth->execute();
+			$affected = $sth->execute();
 			
 		} catch (PDOException $e){
 			
@@ -134,12 +134,17 @@ class PageModel extends dbConnect {
 	
 	private function validLogin($login){
 		
-		try{	
-			
-			if ($this->isExist('login', $login)){	
+		try{
+
+			if(!preg_match('/[a-zA-Z0-9\_\@\-]+/i', $login)){
+				
+				throw new validExeption('Login can contain only alphanumeric latin symbols, "_", "@" and "-". 
+						Other symbols are restricted');
+				
+			}elseif ($this->isExist('login', $login)){	
 	
 					throw new validExeption('Login Exists');
-				}
+		 	}	 	
 				
 		} catch (validExeption $e){
 			
@@ -178,11 +183,12 @@ class PageModel extends dbConnect {
 	
 		try{
 			
-			$this->sth = $this->dbh->prepare('SELECT `id` FROM `users` WHERE `'.$col.'` = :value');
+			$sth = $this->dbh->prepare('SELECT id FROM `users` WHERE :column=:value');
 			
-			$this->sth->bindParam(':value', $val, PDO::PARAM_STR);
+			$sth->bindParam(':column', $col, PDO::PARAM_STR);
+			$sth->bindParam(':value', $val, PDO::PARAM_STR);
 			
-			$this->sth->execute();
+			$sth->execute();
 			
 		} catch (PDOException $e){
 			
@@ -190,7 +196,7 @@ class PageModel extends dbConnect {
 			
 		}
 		
-		return $this->sth->rowCount();
+		return $sth->rowCount();
 		
 	}
 	

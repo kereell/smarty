@@ -1,7 +1,7 @@
 <?php
-require_once(ROOT.DS.'libraries'.DS.'smarty'.DS.'Smarty.class.php');
+require_once(SMARTY_DIR.'Smarty.class.php');
 
-class SmrtSetup extends Smarty{
+class smrtSetup extends Smarty{
 	
 	public function __construct(){
 

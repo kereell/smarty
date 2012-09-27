@@ -3,7 +3,6 @@
 class dbConnect{
 	
 	protected $dbh;
-	protected $sth;
 	
 	protected $db_dsn;
 	protected $db_user;
@@ -19,7 +18,7 @@ class dbConnect{
 		
 		try{				
 			$this->dbh = new PDO($this->db_dsn, $this->db_user, $this->db_passwd);
-			$this->dbh->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+			$this->dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			
 			} catch (PDOException $e){
 				

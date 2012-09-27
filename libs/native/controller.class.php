@@ -1,7 +1,6 @@
 <?php
 class Controller {
 
-	protected $_model;
 	protected $_controller;
 	protected $_action;
 	protected $_params;
@@ -14,15 +13,14 @@ class Controller {
 			/** MVC and params **/
 		$this->_controller = $controller;
 		$this->_action = $action;
-		$this->_model = $model;
 		$this->_params = $params;
 		$this->model = new $model();	
 		
 			/** XAJAX **/
-		$this->xajax = new XajaxSetup();
+		$this->xajax = new xajaxSetup();
 		
 			/** TPL SMARTY**/
-		$this->smarty = new SmrtSetup();
+		$this->smarty = new smrtSetup();
 		$this->smarty->caching = FALSE;
 		
 	}

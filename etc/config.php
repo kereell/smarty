@@ -3,17 +3,25 @@
 /** DEVELOPER MODE **/
 define('DEVELOPER_MODE', TRUE);
 
-/** SMARTY **/
-define('SMARTY_DIR', ROOT.DS.'libraries'.DS.'smarty'.DS);
+/** CONFIGURATION DB **/
+define('DB_HOST', 'localhost');
+define('DB_USER', 'kereell');
+define('DB_PASSWD', 'kirillius');
+define('DB_NAME', 'kereell');
+
+/** CSS IMG JS **/
+define('LIB_DIR', ROOT.DS.'libs'.DS.'native'.DS);
+define('CONTROLLER_DIR', ROOT.DS.'apps'.DS.'controllers'.DS);
+define('MODEL_DIR', ROOT.DS.'apps'.DS.'models'.DS);
 
 /** CSS IMG JS **/
 define('CSS_DIR', DS.'smarty'.DS.'css'.DS);
 define('IMG_DIR', DS.'smarty'.DS.'img'.DS);
 define('JS_DIR', DS.'smarty'.DS.'js'.DS);
 
-/** CONFIGURATION DB **/
+/** XAJAX DIR **/
+define('XAJAX_DIR', ROOT.DS.'libs'.DS.'xajax'.DS);
 
-define('DB_HOST', 'localhost');
-define('DB_USER', 'kereell');
-define('DB_PASSWD', 'kirillius');
-define('DB_NAME', 'kereell');
+/** SMARTY DIR **/
+define('SMARTY_DIR', ROOT.DS.'libs'.DS.'smarty'.DS);
+

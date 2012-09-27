@@ -13,7 +13,7 @@ class PageController extends Controller{
  		$this->smarty->assign('meta_keys', 'List of Users:: Meta Keys');
  		$this->smarty->assign('meta_desc', 'List of Users:: Description');
  		$this->smarty->assign('users', $users);
- 		$this->smarty->assign('dellMethod', '/smarty/page/__processDeleteRecord');
+ 		$this->smarty->assign('dellMethod', '/smarty/page/_processDeleteRecord');
  		$this->smarty->display('page.tpl.php');
 		
 	}
@@ -30,7 +30,7 @@ class PageController extends Controller{
  		$this->smarty->assign('lastname', '');
  		$this->smarty->assign('email', '');
  		$this->smarty->assign('birthday', '');
- 		$this->smarty->assign('actMethod', '/smarty/page/__processAddRecord');
+ 		$this->smarty->assign('actMethod', '/smarty/page/_processAddRecord');
 		$this->smarty->assign('sBtnVal', 'Add Record');	
 		$this->smarty->display('add_edit_table.tpl.php');
 
@@ -51,13 +51,13 @@ class PageController extends Controller{
  		$this->smarty->assign('lastname', $user['lastname']);
  		$this->smarty->assign('email', $user['email']);
  		$this->smarty->assign('birthday', $user['birthday']);
- 		$this->smarty->assign('actMethod', '/smarty/page/__processEditRecord?id='.$this->_params['id']);
+ 		$this->smarty->assign('actMethod', '/smarty/page/_processEditRecord?id='.$this->_params['id']);
 		$this->smarty->assign('sBtnVal', 'Edit Record');	
 		$this->smarty->display('add_edit_table.tpl.php');
 	
 	}
 	
-	public function __processAddRecord(){
+	public function _processAddRecord(){
 		
 		$vals = array(
 				'login' => $_POST['login'],
@@ -69,11 +69,13 @@ class PageController extends Controller{
 				);
 		
 		$added = $this->model->setUser($vals);
-		$this->index();
+		
+		$this->_redirect('/smarty/page');
+		
 		
 	}
 	
-	public function __processEditRecord(){
+	public function _processEditRecord(){
 		
 		$vals = array(
 				'login' => $_POST['login'],
@@ -85,17 +87,20 @@ class PageController extends Controller{
 		);
 		
 		$affected = $this->model->editUser($this->_params['id'], $vals);
-		$this->index();
+		
+		$this->_redirect('/smarty/page');
 		
 	}
 	
-	public function __processDeleteRecord(){
+	public function _processDeleteRecord(){
 		
 		$affected = $this->model->removeUser($this->_params['id']);
-		$this->index();
+		
+		$this->_redirect('/smarty/page');
+		
 	}
 	
-	public function __buildTable(){
+	public function _buildTable(){
 		
 	}
 	
@@ -106,6 +111,12 @@ class PageController extends Controller{
 		echo "</pre>";
 		/** TPL DATA **/
 	//	$this->smarty->display('test.tpl.php');
+		
+	}
+	
+	private function _redirect($addr){
+		
+		header('Location:'.$addr);
 		
 	}
 }
