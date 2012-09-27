@@ -16,7 +16,7 @@ class Controller {
 		$this->_action = $action;
 		$this->_model = $model;
 		$this->_params = $params;
-		$this->model = new $model(DB_HOST, DB_USER, DB_PASS, DB_NAME);	
+		$this->model = new $model();	
 		
 			/** XAJAX **/
 		$this->xajax = new XajaxSetup();

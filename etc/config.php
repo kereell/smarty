@@ -12,7 +12,8 @@ define('IMG_DIR', DS.'smarty'.DS.'img'.DS);
 define('JS_DIR', DS.'smarty'.DS.'js'.DS);
 
 /** CONFIGURATION DB **/
+
 define('DB_HOST', 'localhost');
 define('DB_USER', 'kereell');
-define('DB_PASS', 'kirillius');
+define('DB_PASSWD', 'kirillius');
 define('DB_NAME', 'kereell');
