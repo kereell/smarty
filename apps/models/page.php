@@ -21,7 +21,7 @@ class PageModel extends dBase {
 		
 	}
 	
-<<<<<<< HEAD
+
 	public function getUser($id){
 		
 		$tbl = 'users';
@@ -59,7 +59,4 @@ class PageModel extends dBase {
 	
 	
 	}
-	
-=======
->>>>>>> branch 'master' of https://github.com/kereell/smarty.git
 }

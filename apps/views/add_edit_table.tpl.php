@@ -29,13 +29,8 @@
 	<body>
 	
 		<div class="title">{$title}</div>
-<<<<<<< HEAD
 		<div class="jqmdX jqmClose">&nbsp;</div>
 		<form class="addEditFrm" name="addEditFrm" action="{$actMethod}" method="post">
-=======
-	
-		<form class="addEditFrm" name="addEditFrm" action="" method="post">
->>>>>>> branch 'master' of https://github.com/kereell/smarty.git
 		<div><span>Login</span><input type="text" id="login" name="login" value="{$login}" autocomplete="off" placeholder="Put Your Login" /></div>
 		<div><span>Name</span><input type="text" id="name" name="name" value="{$name}" autocomplete="off" placeholder="Put Your Name" /></div>
 		<div><span>Last Name</span><input type="text" id="lastname" name="lastname" value="{$lastname}" autocomplete="off" placeholder="Put Your Last Name" /></div>

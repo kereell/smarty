@@ -28,12 +28,8 @@
 	<body>
 	<div class="title">{$title}</div>
 		<div class="tblWrap">
-<<<<<<< HEAD
 		<div class="addRcrd" id="addRcrd"><a href="/smarty/page/openAddRecord" onclick="void(0)">Add User</a></div>
 		<div class="jqmWindow" id="addEditDialog">Please wait... <img src="{$smarty.const.IMG_DIR}busy.gif" alt="loading" /></div>
-=======
-		<div class="addRcrd"><a href="/smarty/page/add" onclick="">Add User</a></div>
->>>>>>> branch 'master' of https://github.com/kereell/smarty.git
 			<table class="usrTbl">
 				<thead>
 					<tr>
@@ -56,13 +52,8 @@
 			   			<td class="email">{mailto address="{$user['email']}" encode="javascript"}</td>
 			   			<td>{$user['birthday']}</td>
 			   			<td class="edtRmRcrd">
-<<<<<<< HEAD
 				   			<a href="/smarty/page/openEditRecord/?id={$user['id']}" class="edtRcrd" >&nbsp;</a>&nbsp;
 				   			<a href="{$dellMethod}/?id={$user['id']}" class="rmRcrd" >&nbsp;</a>
-=======
-				   			<a href="/smarty/page/edit/?id={$user['id']}" class="edtRcrd" onclick="return false">&nbsp;</a>&nbsp;
-				   			<a href="/smarty/page/remove/?id={$user['id']}" class="rmRcrd" onclick="return false">&nbsp;</a>
->>>>>>> branch 'master' of https://github.com/kereell/smarty.git
 				   		</td>
 					</tr>
 				{/foreach}
