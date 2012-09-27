@@ -7,6 +7,7 @@ class PageController extends Controller{
 			/** Getting Data **/
  		$users = $this->model->getAllUsers();
  			
+<<<<<<< HEAD
  			/** TPL DATA **/
  		$this->smarty->assign('title', 'List of Users');
  		$this->smarty->assign('meta_keys', 'List of Users:: Meta Keys');
@@ -14,9 +15,22 @@ class PageController extends Controller{
  		$this->smarty->assign('users', $users);
  		$this->smarty->assign('dellMethod', '/smarty/page/__processDeleteRecord');
  		$this->smarty->display('page.tpl.php');
+=======
+ 			
+ 			/** TPL DATA **/
+		$smarty = new SmrtSetup();
+		$smarty->caching = FALSE;
+ 		$smarty->assign('title', 'List of Users');
+ 		$smarty->assign('meta_keys', 'List of Users:: Meta Keys');
+ 		$smarty->assign('meta_desc', 'List of Users:: Description');
+ 		$smarty->assign('users', $users);
+ 		$smarty->display('page.tpl.php');
+ 		
+>>>>>>> branch 'master' of https://github.com/kereell/smarty.git
 		
 	}
 	
+<<<<<<< HEAD
 	public function openAddRecord(){
 		
 			/** TPL DATA **/
@@ -32,8 +46,29 @@ class PageController extends Controller{
 		$this->smarty->assign('sBtnVal', 'Add Record');	
 		$this->smarty->display('add_edit_table.tpl.php');
 
+=======
+	public function add(){
+		
+		$xajax = new XajaxSetup();
+		
+	
+		$smarty = new SmrtSetup();
+		$smarty->caching = FALSE;
+ 		$smarty->assign('title', 'Add User');
+ 		$smarty->assign('meta_keys', 'Add User:: Meta Keys');
+ 		$smarty->assign('meta_desc', 'Add User:: Description');
+ 		$smarty->assign('login', '');
+ 		$smarty->assign('name', '');
+ 		$smarty->assign('lastname', '');
+ 		$smarty->assign('email', '');
+ 		$smarty->assign('birthday', '');
+		$smarty->assign('sBtnVal', 'Add Record');	
+		$smarty->display('add_edit_table.tpl.php');
+	
+>>>>>>> branch 'master' of https://github.com/kereell/smarty.git
 	}
 	
+<<<<<<< HEAD
 	public function openEditRecord(){
 		
 			/** Getting Data **/
@@ -51,6 +86,26 @@ class PageController extends Controller{
  		$this->smarty->assign('actMethod', '/smarty/page/__processEditRecord?id='.$this->_params['id']);
 		$this->smarty->assign('sBtnVal', 'Edit Record');	
 		$this->smarty->display('add_edit_table.tpl.php');
+=======
+	public function edit(){
+	
+		$smarty = new SmrtSetup();
+		$smarty->caching = FALSE;
+ 		$smarty->assign('title', 'Edit User');
+ 		$smarty->assign('meta_keys', 'Edit User:: Meta Keys');
+ 		$smarty->assign('meta_desc', 'Edit User:: Description');
+ 		$smarty->assign('login', '');
+ 		$smarty->assign('name', '');
+ 		$smarty->assign('lastname', '');
+ 		$smarty->assign('email', '');
+ 		$smarty->assign('birthday', '');
+		$smarty->assign('sBtnVal', 'Edit Record');	
+		$smarty->display('add_edit_table.tpl.php');
+	
+	}
+	
+	public function processAddRecord(){
+>>>>>>> branch 'master' of https://github.com/kereell/smarty.git
 		
 	}
 	

@@ -2,8 +2,11 @@
 body {
 	background-color: #999999;
 	color: #333333;
+<<<<<<< HEAD
 	font-family: Verdana;
 	font-size: 14px;
+=======
+>>>>>>> branch 'master' of https://github.com/kereell/smarty.git
 }
 
 .title {
@@ -36,10 +39,13 @@ body {
 	color:white;
 }
 
+<<<<<<< HEAD
 .usrTbl td {
 	font-size: 13px;
 }
 
+=======
+>>>>>>> branch 'master' of https://github.com/kereell/smarty.git
 .usrTbl th a:HOVER {
 	background-color: #999999;
 }

@@ -49,12 +49,20 @@ function unregisterGlobals() {
 function callHook() {
 	global $url;
 
+<<<<<<< HEAD
 	$tmpUrl = explode('?', $url);
 	$pathArray = explode('/', $tmpUrl[0]);
 	$controller = $pathArray[2];
 	$action = @$pathArray[3] ? $pathArray[3] : 'index';
 //	$params = $tmpurl[1];
 	parse_str(@$tmpUrl[1], $params);
+=======
+	$tmpurl = explode('?', $url);
+	$urlArray = explode('/', $tmpurl[0]);
+	$controller = $urlArray[0];
+	$action = @$urlArray[1] ? $urlArray[1] : 'index';
+	parse_str(@$tmpurl[1], $param);
+>>>>>>> branch 'master' of https://github.com/kereell/smarty.git
 
 	$controllerName = $controller;
 	$controller = ucwords($controller);
