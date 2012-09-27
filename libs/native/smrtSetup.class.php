@@ -6,10 +6,11 @@ class smrtSetup extends Smarty{
 	public function __construct(){
 
 		parent::__construct();
-		$this->setTemplateDir(ROOT.DS.'apps'.DS.'views'.DS);
-		$this->setCompileDir(ROOT.DS.'tmp'.DS.'tpl_c'.DS);
-		$this->setCompileDir(ROOT.DS.'etc'.DS);
-		$this->setCompileDir(ROOT.DS.'tmp'.DS.'cache'.DS);
+		
+		$this->setTemplateDir(TPL_DIR);
+		$this->setCompileDir(TMP_DIR.'tpl_c'.DS);
+		$this->setConfigDir(CFG_DIR);
+		$this->setCacheDir(CACHE_DIR);
 		
 		}	
 	}

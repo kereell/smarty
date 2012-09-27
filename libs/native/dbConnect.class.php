@@ -24,11 +24,9 @@ class dbConnect{
 				
 				throw new dbExeption($e);
 				
-			}
-		
+			}		
 	
 		}
-
 	
 	public function __destruct(){
 
@@ -39,5 +37,5 @@ class dbConnect{
 		unset($this->db_passwd);
 		unset($this->db_opts);
 		
-		}
 	}
+}

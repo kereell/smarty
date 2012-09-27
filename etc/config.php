@@ -9,10 +9,19 @@ define('DB_USER', 'kereell');
 define('DB_PASSWD', 'kirillius');
 define('DB_NAME', 'kereell');
 
-/** CSS IMG JS **/
+/** LIBRARIES CONTROLLERS MODELS TEMPLATES **/
 define('LIB_DIR', ROOT.DS.'libs'.DS.'native'.DS);
 define('CONTROLLER_DIR', ROOT.DS.'apps'.DS.'controllers'.DS);
 define('MODEL_DIR', ROOT.DS.'apps'.DS.'models'.DS);
+define('TPL_DIR', ROOT.DS.'apps'.DS.'views'.DS);
+
+/** CONFIG TMP **/
+define('CFG_DIR', ROOT.DS.'etc'.DS);
+define('TMP_DIR', ROOT.DS.'tmp'.DS);
+
+/** LOG CACHE **/
+define('LOG_DIR', TMP_DIR.'logs'.DS);
+define('CACHE_DIR', TMP_DIR.'cache'.DS);
 
 /** CSS IMG JS **/
 define('CSS_DIR', DS.'smarty'.DS.'css'.DS);

@@ -5,15 +5,15 @@ function setReporting() {
 
 	if(DEVELOPER_MODE == true){
 
-		error_reporting(E_ALL);
-		ini_set('display_errors','On');
+		error_reporting(E_ALL | E_STRICT);
+		ini_set('display_errors', 1);
 		
 	} else {
 
 		error_reporting(E_ALL);
-		ini_set('display_errors','Off');
+		ini_set('display_errors', 0);
 		ini_set('log_errors', 'On');
-		ini_set('error_log', ROOT.DS.'tmp'.DS.'logs'.DS.'error.log');
+		ini_set('error_log', LOG_DIR.'error.log');
 
 	}
 	
@@ -41,7 +41,6 @@ function removeMagicQuotes() {
 }
 	
 /** Check register globals and remove them **/
-	
 function unregisterGlobals() {
 	
 	if(ini_get('register_globals')){
@@ -63,7 +62,6 @@ function unregisterGlobals() {
 function callHook() {
 	
 	global $url;
-
 
 	$tmpUrl = explode('?', $url);
 	$pathArray = explode('/', $tmpUrl[0]);
