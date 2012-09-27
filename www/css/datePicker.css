@@ -5,6 +5,7 @@ table.jCalendar {
 	background: #aaa;
     border-collapse: separate;
     border-spacing: 2px;
+	z-index: 200;
 }
 table.jCalendar th {
 	background: #333;

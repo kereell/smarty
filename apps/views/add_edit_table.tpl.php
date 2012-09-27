@@ -11,10 +11,10 @@
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 		<meta http-equiv="cache-control" content="no-cache" />
 		
-			<!-- General Style Sheet -->
-		<link rel="stylesheet" type="text/css" href="{$smarty.const.CSS_DIR}addEdit.css" />
 			<!-- Style Sheet for jQuery Date Picker -->
 		<link rel="stylesheet" type="text/css" href="{$smarty.const.CSS_DIR}datePicker.css" />
+			<!-- General Style Sheet -->
+		<link rel="stylesheet" type="text/css" href="{$smarty.const.CSS_DIR}addEdit.css" />
 			<!-- jQuery -->
 		<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 			<!-- jQuery required plugins for Date Picker -->
@@ -29,8 +29,8 @@
 	<body>
 	
 		<div class="title">{$title}</div>
-	
-		<form class="addEditFrm" name="addEditFrm" action="" method="post">
+		<div class="jqmdX jqmClose">&nbsp;</div>
+		<form class="addEditFrm" name="addEditFrm" action="{$actMethod}" method="post">
 		<div><span>Login</span><input type="text" id="login" name="login" value="{$login}" autocomplete="off" placeholder="Put Your Login" /></div>
 		<div><span>Name</span><input type="text" id="name" name="name" value="{$name}" autocomplete="off" placeholder="Put Your Name" /></div>
 		<div><span>Last Name</span><input type="text" id="lastname" name="lastname" value="{$lastname}" autocomplete="off" placeholder="Put Your Last Name" /></div>

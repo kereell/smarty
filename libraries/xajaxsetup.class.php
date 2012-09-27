@@ -6,10 +6,7 @@ class XajaxSetup {
 	protected $xajax;
 	
 	public function __constructor(){
-		
 		$this->xajax = new xajax();
-		return $this->xajax;
-		
 	}
 	
 }

@@ -1,88 +1,108 @@
 <?php
 
-class PageController{
-
-	
-	protected $model;
-	protected $params = array();
-	
-	public function __constructor($params){
-		$this->params = $params;
-	}
+class PageController extends Controller{
 	
 	public function index(){
 
 			/** Getting Data **/
- 		$page = new PageModel(DB_HOST, DB_USER, DB_PASS, DB_NAME);
- 		$users = $page->getAllUsers();
- 			
+ 		$users = $this->model->getAllUsers();
  			
  			/** TPL DATA **/
-		$smarty = new SmrtSetup();
-		$smarty->caching = FALSE;
- 		$smarty->assign('title', 'List of Users');
- 		$smarty->assign('meta_keys', 'List of Users:: Meta Keys');
- 		$smarty->assign('meta_desc', 'List of Users:: Description');
- 		$smarty->assign('users', $users);
- 		$smarty->display('page.tpl.php');
- 		
+ 		$this->smarty->assign('title', 'List of Users');
+ 		$this->smarty->assign('meta_keys', 'List of Users:: Meta Keys');
+ 		$this->smarty->assign('meta_desc', 'List of Users:: Description');
+ 		$this->smarty->assign('users', $users);
+ 		$this->smarty->assign('dellMethod', '/smarty/page/__processDeleteRecord');
+ 		$this->smarty->display('page.tpl.php');
 		
 	}
 	
-	public function add(){
+	public function openAddRecord(){
 		
-		$xajax = new XajaxSetup();
-		
-	
-		$smarty = new SmrtSetup();
-		$smarty->caching = FALSE;
- 		$smarty->assign('title', 'Add User');
- 		$smarty->assign('meta_keys', 'Add User:: Meta Keys');
- 		$smarty->assign('meta_desc', 'Add User:: Description');
- 		$smarty->assign('login', '');
- 		$smarty->assign('name', '');
- 		$smarty->assign('lastname', '');
- 		$smarty->assign('email', '');
- 		$smarty->assign('birthday', '');
-		$smarty->assign('sBtnVal', 'Add Record');	
-		$smarty->display('add_edit_table.tpl.php');
-	
+			/** TPL DATA **/
+ 		$this->smarty->assign('title', 'Add User');
+ 		$this->smarty->assign('meta_keys', 'Add User:: Meta Keys');
+ 		$this->smarty->assign('meta_desc', 'Add User:: Description');
+ 		$this->smarty->assign('login', '');
+ 		$this->smarty->assign('name', '');
+ 		$this->smarty->assign('lastname', '');
+ 		$this->smarty->assign('email', '');
+ 		$this->smarty->assign('birthday', '');
+ 		$this->smarty->assign('actMethod', '/smarty/page/__processAddRecord');
+		$this->smarty->assign('sBtnVal', 'Add Record');	
+		$this->smarty->display('add_edit_table.tpl.php');
+
 	}
 	
-	public function edit(){
-	
-		$smarty = new SmrtSetup();
-		$smarty->caching = FALSE;
- 		$smarty->assign('title', 'Edit User');
- 		$smarty->assign('meta_keys', 'Edit User:: Meta Keys');
- 		$smarty->assign('meta_desc', 'Edit User:: Description');
- 		$smarty->assign('login', '');
- 		$smarty->assign('name', '');
- 		$smarty->assign('lastname', '');
- 		$smarty->assign('email', '');
- 		$smarty->assign('birthday', '');
-		$smarty->assign('sBtnVal', 'Edit Record');	
-		$smarty->display('add_edit_table.tpl.php');
-	
-	}
-	
-	public function processAddRecord(){
+	public function openEditRecord(){
+		
+			/** Getting Data **/
+		$user = $this->model->getUser($this->_params['id']);
+		
+			/** TPL DATA **/
+ 		$this->smarty->assign('title', 'Edit User');
+ 		$this->smarty->assign('meta_keys', 'Edit User:: Meta Keys');
+ 		$this->smarty->assign('meta_desc', 'Edit User:: Description');
+ 		$this->smarty->assign('login', $user['login']);
+ 		$this->smarty->assign('name', $user['name']);
+ 		$this->smarty->assign('lastname', $user['lastname']);
+ 		$this->smarty->assign('email', $user['email']);
+ 		$this->smarty->assign('birthday', $user['birthday']);
+ 		$this->smarty->assign('actMethod', '/smarty/page/__processEditRecord?id='.$this->_params['id']);
+		$this->smarty->assign('sBtnVal', 'Edit Record');	
+		$this->smarty->display('add_edit_table.tpl.php');
 		
 	}
 	
-	public function processEditRecord(){
+	public function __processAddRecord(){
+		
+		$vals = array(
+				'login' => $_POST['login'],
+				'name' => $_POST['name'],
+				'lastname' => $_POST['lastname'],
+				'email' => $_POST['email'],
+				'pass' => md5($_POST['rePass']),
+				'birthday' => implode('-', array_reverse(explode('-', $_POST['birthday'])))
+				);
+		
+		$added = $this->model->setUser($vals);
+		$this->index();
 		
 	}
 	
-	public function buildTable(){
+	public function __processEditRecord(){
+		
+		$vals = array(
+				'login' => $_POST['login'],
+				'name' => $_POST['name'],
+				'lastname' => $_POST['lastname'],
+				'email' => $_POST['email'],
+				'pass' => md5($_POST['rePass']),
+				'birthday' => implode('-', array_reverse(explode('-', $_POST['birthday'])))
+		);
+		
+		$affected = $this->model->editUser($this->_params['id'], $vals);
+		$this->index();
+		
+	}
+	
+	public function __processDeleteRecord(){
+		
+		$affected = $this->model->removeUser($this->_params['id']);
+		$this->index();
+	}
+	
+	public function __buildTable(){
 		
 	}
 	
 	public function test(){
-		
-		$smarty = new SmrtSetup();
-		$smarty->display('test.tpl.php');
+
+		echo "<pre>";
+		print_r($_SERVER);
+		echo "</pre>";
+		/** TPL DATA **/
+	//	$this->smarty->display('test.tpl.php');
 		
 	}
 }
-	

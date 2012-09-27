@@ -53,16 +53,16 @@ class dBase{
 	
 	protected function getData($table, $fields='', $condition=''){
 		
-		$items = $fields ? mysql_real_escape_string($fields, $this->cd) : '*';
-		$tbl = mysql_real_escape_string($table,$this->cd);
-		$cond = $condition ? mysql_real_escape_string($condition, $this->cd) : '';
+		$items = $fields ? $fields : '*';
+		$tbl = mysql_real_escape_string($table, $this->cd);
+		$cond = $condition ? $condition : '';
 		
 		$this->result = $this->doQuery('SELECT '.$items.' FROM `'.$tbl.'` '.$cond.'') or
 			$this->error('Can\'t get "'.$items.'" from the "'.$tbl.'" with the condition "'.$cond.'"');
 		
 		}
 		
-	protected function setData($table, array $values, $condition=''){
+	protected function editData($table, array $values, $condition=''){
 		
 		$items = '';
 		foreach ($values as $key => $val){
@@ -70,7 +70,7 @@ class dBase{
 			}
 		$items_str = rtrim($items, ', ');
 		
-		$cond = $condition ? mysql_real_escape_string($condition, $this->cd) : '';
+		$cond = $condition ? $condition : '';
 		$tbl = mysql_real_escape_string($table, $this->cd);
 		
 		$this->doQuery('UPDATE `'.$tbl.'` SET '.$items_str.' '.$cond.'') or
@@ -80,7 +80,7 @@ class dBase{
 		
 		}
 	
-	protected function putData($table, array $values, $condition=''){
+	protected function setData($table, array $values, $condition=''){
 		
 		$cols = ''; $vals = '';
 		foreach ($values as $k => $v){
@@ -93,7 +93,7 @@ class dBase{
 			}
 		$items_str = $cols ? ' ('.rtrim($cols, ', ').') VALUES ('.rtrim($vals, ', ').')' : ' VALUES ('.rtrim($vals, ', ').')';
 		$tbl = mysql_real_escape_string($table);
-		$cond = $condition ? mysql_real_escape_string($condition) : '';
+		$cond = $condition ? $condition : '';
 		
 		$this->doQuery('INSERT INTO `'.$tbl.'` '.$items_str.' '.$cond.'') or
 			$this->error('Can\'t put "'.$items_str.'" into "'.$tbl.'" whith the next condition: "'.$cond.'"');
@@ -105,7 +105,7 @@ class dBase{
 	protected function removeData($table, $condition=''){
 		
 		$tbl = mysql_real_escape_string($table);
-		$cond = $condition ? mysql_real_escape_string($condition) : '';
+		$cond = $condition ? $condition : '';
 		
 		$this->doQuery('DELETE FROM `'.$tbl.'` '.$cond.'') or
 			$this->error('Can\'t delete from "'.$tbl.'" with the next condition: "'.$cond.'" ');

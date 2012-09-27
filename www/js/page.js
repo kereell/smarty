@@ -1,4 +1,10 @@
-$(document).ready(function(){
+$().ready(function() {
+		$('#addEditDialog').jqm({modal: true, trigger: '.addRcrd a'});
+		$('#addEditDialog').jqm({ajax: $('.addRcrd a').attr('href')});
+//		$('#addEditDialog').jqmAddTrigger('.edtRcrd');
+//		$('#addEditDialog').jqm({ajax: $('.edtRcrd').attr('href')});
+});
+/*$(document).ready(function(){
 	$("#flex1").flexigrid({
 		url: 'post2.php',
 		dataType: 'json',
@@ -24,4 +30,5 @@ $(document).ready(function(){
 		onSubmit: addFormData,
 		height: 200
 		});
-});
+});*/
+

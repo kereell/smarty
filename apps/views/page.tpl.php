@@ -10,13 +10,12 @@
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 		<meta http-equiv="cache-control" content="no-cache" />
 		
-			<!-- General Style Sheet -->
-		<link rel="stylesheet" type="text/css" href="{$smarty.const.CSS_DIR}page.css" />
 			<!-- jQuery Modal Window Style Sheet -->
 		<link rel="stylesheet" type="text/css" href="{$smarty.const.CSS_DIR}jqModal.css" />
 			<!-- jQuery Flexgrid Table Style Sheet  -->
 		<link rel="stylesheet" type="text/css" href="{$smarty.const.CSS_DIR}flexigrid.css" />
-		
+			<!-- General Style Sheet -->
+		<link rel="stylesheet" type="text/css" href="{$smarty.const.CSS_DIR}page.css" />
 			<!-- jQuery -->
 		<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 			<!-- jQuery Modal Window --> 
@@ -29,7 +28,8 @@
 	<body>
 	<div class="title">{$title}</div>
 		<div class="tblWrap">
-		<div class="addRcrd"><a href="/smarty/page/add" onclick="">Add User</a></div>
+		<div class="addRcrd" id="addRcrd"><a href="/smarty/page/openAddRecord" onclick="void(0)">Add User</a></div>
+		<div class="jqmWindow" id="addEditDialog">Please wait... <img src="{$smarty.const.IMG_DIR}busy.gif" alt="loading" /></div>
 			<table class="usrTbl">
 				<thead>
 					<tr>
@@ -52,8 +52,8 @@
 			   			<td class="email">{mailto address="{$user['email']}" encode="javascript"}</td>
 			   			<td>{$user['birthday']}</td>
 			   			<td class="edtRmRcrd">
-				   			<a href="/smarty/page/edit/?id={$user['id']}" class="edtRcrd" onclick="return false">&nbsp;</a>&nbsp;
-				   			<a href="/smarty/page/remove/?id={$user['id']}" class="rmRcrd" onclick="return false">&nbsp;</a>
+				   			<a href="/smarty/page/openEditRecord/?id={$user['id']}" class="edtRcrd" >&nbsp;</a>&nbsp;
+				   			<a href="{$dellMethod}/?id={$user['id']}" class="rmRcrd" >&nbsp;</a>
 				   		</td>
 					</tr>
 				{/foreach}

@@ -49,23 +49,24 @@ function unregisterGlobals() {
 function callHook() {
 	global $url;
 
-	$tmpurl = explode('?', $url);
-	$urlArray = explode('/', $tmpurl[0]);
-	$controller = $urlArray[0];
-	$action = @$urlArray[1] ? $urlArray[1] : 'index';
-	parse_str(@$tmpurl[1], $param);
+	$tmpUrl = explode('?', $url);
+	$pathArray = explode('/', $tmpUrl[0]);
+	$controller = $pathArray[2];
+	$action = @$pathArray[3] ? $pathArray[3] : 'index';
+//	$params = $tmpurl[1];
+	parse_str(@$tmpUrl[1], $params);
 
 	$controllerName = $controller;
 	$controller = ucwords($controller);
-	$model = rtrim($controller, 's');
+	$model = $controller.'Model';
 	$controller .= 'Controller';
 	if(class_exists($controller)){
-		$dispatch = new $controller($model, $controllerName, $action);
+		$dispatch = new $controller($model, $controllerName, $action, $params);
 		} else {
 			exit('Class '.$controller.' does not exists');
 			}
 	if(method_exists($controller, $action)){
-		call_user_func_array(array($dispatch,$action), $param);
+		call_user_func_array(array($dispatch, $action), $params);
 		} else {
 			exit('Method '.$action.' does not exists in '.$controller);
 			}

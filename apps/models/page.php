@@ -17,9 +17,46 @@ class PageModel extends dBase {
 	public function getAllUsers(){
 		
 		$this->getAllData('users');
-		
 		return $this->getResArr();
 		
+	}
+	
+	public function getUser($id){
+		
+		$tbl = 'users';
+		$flds = '`login`, `name`, `lastname`, `email`, DATE_FORMAT(`birthday`, "%d-%m-%Y") AS `birthday`';
+		$cnd = 'WHERE `id` = "'.$id.'"';
+		
+		$this->getData($tbl, $flds, $cnd);
+		
+		return $this->getResRow();
+		
+	}
+	
+	public function setUser($vals){
+		
+		$ins_id = $this->setData('users', $vals);
+		
+		return $ins_id;
+		
+	}
+	
+	public function editUser($id, $vals){
+		
+		$affected = $this->editData('users', $vals, 'WHERE `id` = "'.$id.'"');
+		
+		return $affected;
+		
+		
+	}
+	
+	public function removeUser($id){
+		
+		$affected = $this->removeData('users', 'WHERE `id` = "'.$id.'"');
+	
+		return $affected;
+	
+	
 	}
 	
 }
