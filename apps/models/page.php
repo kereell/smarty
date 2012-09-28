@@ -71,7 +71,7 @@ class PageModel extends dbConnect {
 			$sth->bindParam(':name', $this->validName($data['name']), PDO::PARAM_STR);
 			$sth->bindParam(':lastname', $this->validName($data['lastname']), PDO::PARAM_STR);
 			$sth->bindParam(':email', $this->validEmail($data['email']), PDO::PARAM_STR);
-			$sth->bindParam(':pass', $this->validPasswd($data['pass']));
+			$sth->bindParam(':pass', $this->validPasswd($data['rePass']));
 			$sth->bindParam(':birthday', $this->validBirth($data['birthday']), PDO::PARAM_STR);
 			
 			$sth->execute();
@@ -98,7 +98,7 @@ class PageModel extends dbConnect {
 			$sth->bindParam(':name', $this->validName($data['name']), PDO::PARAM_STR);
 			$sth->bindParam(':lastname', $this->validName($data['lastname']), PDO::PARAM_STR);
 			$sth->bindParam(':email', $this->validEmail($data['email']), PDO::PARAM_STR);
-			$sth->bindParam(':pass', $this->validPasswd($data['pass']));
+			$sth->bindParam(':pass', $this->validPasswd($data['rePass']));
 			$sth->bindParam(':birthday', $this->validBirth($data['birthday']), PDO::PARAM_STR);
 			
 			$affected = $sth->execute();
@@ -133,23 +133,20 @@ class PageModel extends dbConnect {
 	}
 	
 	private function validLogin($login){
-		
-		try{
 
-			if(!preg_match('/[a-zA-Z0-9\_\@\-]+/i', $login)){
-				
-				throw new validExeption('Login can contain only alphanumeric latin symbols, "_", "@" and "-". 
-						Other symbols are restricted');
-				
-			}elseif ($this->isExist('login', $login)){	
-	
-					throw new validExeption('Login Exists');
-		 	}	 	
-				
-		} catch (validExeption $e){
+		if(!$login){
 			
+			throw new validExeption('Login can not be empty');
 			
-		}
+		} elseif(!preg_match('/^[a-z0-9\_\@\-]+$/si', $login)){
+			
+			throw new validExeption('Login can contain only alphanumeric latin symbols, "_", "@" and "-". 
+					Other symbols are restricted');
+			
+		} elseif ($this->isExist('login', $login)){	
+
+				throw new validExeption('Such login already taken');
+	 	}	 	
 			
 		return $login;
 	
@@ -157,36 +154,78 @@ class PageModel extends dbConnect {
 	
 	private function validName($name){
 		
+		if(!$name){
+				
+			throw new validExeption('Name can not be empty');
+				
+		} elseif(!preg_match('/^[a-z]+$/si', $name)){
+				
+			throw new validExeption('Name can contain only latin letters. Other symbols or even numbers are restricted');
+				
+		}
+		
 		return $name;
 	
 	}
 	
 	private function validEmail($email){
 		
+		if(!$email){
+				
+			throw new validExeption('Email can not be empty');
+				
+		} elseif(!filter_var($email,FILTER_VALIDATE_EMAIL)){
+				
+			throw new validExeption('Email is not valid (maybe contains some crap...)');
+				
+		} elseif ($this->isExist('email', $email)){
+		
+			throw new validExeption('Such email already taken');
+		}
+		
 		return $email;
 		
 	}
 	
 	private function validBirth($birth){
+		
+		if(!$birth){
+				
+			throw new validExeption('Birthday can not be empty');
+				
+		} elseif(!preg_match('/^\d{2}\-\d{2}\-\d{4}$/s', $birth)){
+			
+			throw new validExeption('Birthday must be in a format "dd-mm-yyyy"');
+			
+		} 
+		
+		$birthday = implode('-', array_reverse(explode('-', $birth)));
 	
-		return $birth;
+		return $birthday;
 		
 	}
 	
 	private function validPasswd($passwd){
 		
-		return $passwd;
+		if(!$passwd){
+		
+			throw new validExeption('Password can not be empty');
+		
+		} 
+		
+		$crypted = md5($passwd);
+		
+		return $crypted;
 	
 	}
 	
 	private function isExist($col, $val){
 	
 		try{
+			//TODO Try to get another method of case inse for e.g setAttribute(PDO::ATTR_CASE, PDO::CASE_LOWER)
+			$sth = $this->dbh->prepare('SELECT id FROM `users` WHERE LOWER('.$col.')=:value');
 			
-			$sth = $this->dbh->prepare('SELECT id FROM `users` WHERE :column=:value');
-			
-			$sth->bindParam(':column', $col, PDO::PARAM_STR);
-			$sth->bindParam(':value', $val, PDO::PARAM_STR);
+			$sth->bindParam(':value', strtolower($val), PDO::PARAM_STR);
 			
 			$sth->execute();
 			

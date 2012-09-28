@@ -68,7 +68,7 @@ class PageController extends controller{
 				'birthday' => implode('-', array_reverse(explode('-', $_POST['birthday'])))
 				);
 		
-		$added = $this->model->setUser($vals);
+		$added = $this->model->setUser($_POST);
 		
 		$this->_redirect('/smarty/page');
 		
@@ -86,7 +86,7 @@ class PageController extends controller{
 				'birthday' => implode('-', array_reverse(explode('-', $_POST['birthday'])))
 		);
 		
-		$affected = $this->model->editUser($this->_params['id'], $vals);
+		$affected = $this->model->editUser($this->_params['id'], $_POST);
 		
 		$this->_redirect('/smarty/page');
 		

@@ -8,7 +8,8 @@ $(document).ready(function(){
 				endDate: (new Date()).asString()
 			}
 		);
-	$('.addEditFrm input').blur(function validInput(){
+	/** TODO Make stronger Validation **/
+/*	$('.addEditFrm input').blur(function validInput(){
 		switch(this.id){
 		case 'login':
 		case 'name':
@@ -94,8 +95,8 @@ $(document).ready(function(){
 		if($('div').is('.error') || $('.addEditFrm input').not('#sBtn').val()==''){
 			alert('There is an error');
 		} else {
-			/** some code here **/
+			*//** some code here **//*
 			}
-	});
+	});*/
 	
 });
