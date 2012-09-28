@@ -36,7 +36,6 @@ class PageController extends controller{
 
 	}
 	
-	
 	public function openEditRecord(){
 		
 			/** Getting Data **/
@@ -59,15 +58,6 @@ class PageController extends controller{
 	
 	public function _processAddRecord(){
 		
-		$vals = array(
-				'login' => $_POST['login'],
-				'name' => $_POST['name'],
-				'lastname' => $_POST['lastname'],
-				'email' => $_POST['email'],
-				'pass' => md5($_POST['rePass']),
-				'birthday' => implode('-', array_reverse(explode('-', $_POST['birthday'])))
-				);
-		
 		$added = $this->model->setUser($_POST);
 		
 		$this->_redirect('/smarty/page');
@@ -76,15 +66,6 @@ class PageController extends controller{
 	}
 	
 	public function _processEditRecord(){
-		
-		$vals = array(
-				'login' => $_POST['login'],
-				'name' => $_POST['name'],
-				'lastname' => $_POST['lastname'],
-				'email' => $_POST['email'],
-				'pass' => md5($_POST['rePass']),
-				'birthday' => implode('-', array_reverse(explode('-', $_POST['birthday'])))
-		);
 		
 		$affected = $this->model->editUser($this->_params['id'], $_POST);
 		

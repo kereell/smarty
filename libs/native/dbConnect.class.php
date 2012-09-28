@@ -9,7 +9,7 @@ class dbConnect{
 	protected $db_passwd;
 	protected $db_opts;
 	
-	public function __construct($db_name, $db_host, $db_user, $db_passwd, $db_opts=''){
+	public function __construct($db_name, $db_host, $db_user, $db_passwd, array $db_opts=array()){
 		
 		$this->db_dsn = sprintf('mysql:dbname=%s;host=%s',$db_name,$db_host);
 		$this->db_user = $db_user;
@@ -17,8 +17,13 @@ class dbConnect{
 		$this->db_opts = $db_opts;
 		
 		try{				
-			$this->dbh = new PDO($this->db_dsn, $this->db_user, $this->db_passwd);
-			$this->dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+			$this->dbh = new PDO($this->db_dsn, $this->db_user, $this->db_passwd,$this->db_opts);
+			
+			if(DEVELOPER_MODE){
+				$this->dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+			} else {
+				$this->dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
+			}
 			
 			} catch (PDOException $e){
 				
