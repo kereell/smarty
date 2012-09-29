@@ -1,6 +1,6 @@
 <?php
 
-class dbExeption extends Exception {
+class DbExeption extends Exception {
 	
 	public function __construct($e){
 		

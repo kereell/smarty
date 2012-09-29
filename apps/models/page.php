@@ -1,6 +1,6 @@
 <?php
 
-class PageModel extends dbConnect {
+class PageModel extends Model {
 	
 	public function __construct() {
 
@@ -29,7 +29,7 @@ class PageModel extends dbConnect {
 			
 		} catch (PDOException $e){
 				
-				throw new dbExeption($e);
+				throw new DbExeption($e);
 				
 			}
 		
@@ -53,7 +53,7 @@ class PageModel extends dbConnect {
 			
 		} catch (PDOException $e){
 			
-				throw new dbExeption($e);
+				throw new DbExeption($e);
 				
 			}
 		
@@ -81,7 +81,7 @@ class PageModel extends dbConnect {
 		
 		} catch (PDOException $e){
 
-			throw new dbExeption($e);
+			throw new DbExeption($e);
 		
 		}
 		
@@ -110,7 +110,7 @@ class PageModel extends dbConnect {
 			
 		} catch (PDOException $e){
 			
-			throw new dbExeption($e);
+			throw new DbExeption($e);
 			
 		}
 		
@@ -131,7 +131,7 @@ class PageModel extends dbConnect {
 			
 		} catch (PDOException $e){
 			
-			throw new dbExeption($e);
+			throw new DbExeption($e);
 			
 		}
 	
@@ -151,7 +151,7 @@ class PageModel extends dbConnect {
 			
 		} catch (PDOException $e){
 			
-			throw new dbExeption($e);
+			throw new DbExeption($e);
 			
 		}
 		

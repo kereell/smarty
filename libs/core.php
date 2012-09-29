@@ -61,13 +61,13 @@ function unregisterGlobals() {
 /** Main Call Function **/
 function callHook() {
 	
-	global $url;
+	global $path;
+	global $query;
 
-	$tmpUrl = explode('?', $url);
-	$pathArray = explode('/', $tmpUrl[0]);
-	$controller = $pathArray[2];
-	$action = @$pathArray[3] ? $pathArray[3] : 'index';
-	parse_str(@$tmpUrl[1], $params);
+	$pathArray = explode('/', $path);
+	$controller = @$pathArray[1] ? @$pathArray[1] : 'index';
+	$action = @$pathArray[2] ? $pathArray[2] : 'index';
+	parse_str($query, $params);
 	
 	$controllerName = $controller;
 	$controller = ucwords($controller);
@@ -80,7 +80,7 @@ function callHook() {
 		
 	} else {
 
-			throw new pageExeption('Class '.$controller.' does not exists');
+			throw new PageExeption('Class '.$controller.' does not exists');
 
 		}
 	
@@ -90,7 +90,7 @@ function callHook() {
 		
 	} else {
 
-			throw new pageExeption('Method '.$action.' does not exists in '.$controller);
+			throw new PageExeption('Method '.$action.' does not exists in '.$controller);
 			
 		}
 }
@@ -114,11 +114,11 @@ function autoloader($className) {
 				require_once(MODEL_DIR.substr(strtolower($className), 0,-5).'.php');
 				
 		} else {
-			throw new pageExeption('Can\'t load '.$className);
-			}				
-	} /* elseif (strstr($className, 'xajax')){
-		
-		 }*/
+
+			throw new PageExeption('Can\'t load '.$className);
+			
+		}				
+	} 
 }
 	
 setReporting();

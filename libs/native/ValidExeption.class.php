@@ -1,6 +1,6 @@
 <?php
 
-class validExeption extends Exception {
+class ValidExeption extends Exception {
 	
 	protected $message;
 	

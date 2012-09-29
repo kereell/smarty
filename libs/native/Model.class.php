@@ -1,6 +1,6 @@
 <?php
 
-class dbConnect{
+class Model{
 	
 	protected $dbh;
 	
@@ -35,7 +35,7 @@ class dbConnect{
 	
 	public function __destruct(){
 
-		unset($this->dbh);
+		$this->dbh = NULL;
 		
 		unset($this->db_dsn);
 		unset($this->db_user);
