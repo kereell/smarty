@@ -76,7 +76,7 @@ function callHook() {
 	
 	if(class_exists($controller)){
 
-		$dispatch = new $controller($model, $controllerName, $action, $params);
+		$dispatch = new $controller($model, $action);
 		
 	} else {
 
@@ -125,7 +125,7 @@ setReporting();
 
 removeMagicQuotes();
 
-unregisterGlobals();
+//unregisterGlobals();
 
 spl_autoload_register('autoloader');
 

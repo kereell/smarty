@@ -19,12 +19,33 @@ class PageModel extends Model {
 		
 	}
 	
-	public function getAllUsers(){
+	public function getCountRows(){
 		
 		try{
 			
 			$sth = $this->dbh->prepare('SELECT * FROM `users`');
+
 			$sth->execute();
+			
+			$sth->setFetchMode(PDO::FETCH_ASSOC);
+			
+			} catch (PDOException $e){
+			
+				throw new DbExeption($e);
+			
+			}
+			
+			return $sth->rowCount();
+	}
+	
+	public function getAllUsers($offset, $limit){
+		
+		try{
+			
+			$sth = $this->dbh->prepare('SELECT * FROM `users` LIMIT '.$offset.', '.$limit.'');
+
+			$sth->execute();
+			
 			$sth->setFetchMode(PDO::FETCH_ASSOC);
 			
 		} catch (PDOException $e){
@@ -139,13 +160,13 @@ class PageModel extends Model {
 		
 	}
 	
-	public function isExist($col, $val){
+	public function isExist($column, $value){
 	
 		try{
 			
-			$sth = $this->dbh->prepare('SELECT `id` FROM `users` WHERE `'.$col.'`=:value');
+			$sth = $this->dbh->prepare('SELECT `id` FROM `users` WHERE `'.$column.'`=:val');
 			
-			$sth->bindParam(':value', $val, PDO::PARAM_STR);
+			$sth->bindParam(':val', $value, PDO::PARAM_STR);
 			
 			$sth->execute();
 			

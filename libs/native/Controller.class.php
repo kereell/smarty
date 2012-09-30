@@ -5,20 +5,16 @@ require_once(SMARTY_DIR.'Smarty.class.php');
 
 class Controller {
 
-	protected $_controller;
 	protected $_action;
-	protected $_params;
 	protected $mdl;
 	
 	protected $tpl;
 	protected $xajax;
 
-	function __construct($model, $controller, $action, $params) {
+	function __construct($model, $action) {
 		
-			/** MVC and params **/
-		$this->_controller = $controller;
+			/** Controller properties **/
 		$this->_action = $action;
-		$this->_params = $params;
 		$this->mdl = new $model();	
 		
 			/** XAJAX **/

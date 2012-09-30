@@ -43,7 +43,7 @@
 					</tr>
 				</thead>
 				<tbody>
-				{foreach from=$users item=user}
+					{foreach from=$users item=user}
 					<tr class="{cycle values='oddTr, evenTr'}">
 			   			<td>{$user['id']}</td>
 			   			<td>{$user['login']}</td>
@@ -52,14 +52,33 @@
 			   			<td class="email">{mailto address="{$user['email']}" encode="javascript"}</td>
 			   			<td>{$user['birthday']}</td>
 			   			<td class="edtRmRcrd">
-				   			<a href="/smarty/page/openEditRecord/?id={$user['id']}" class="edtRcrd" >&nbsp;</a>&nbsp;
+				   			<a href="/smarty/page/openEditRecord?id={$user['id']}" class="edtRcrd" >&nbsp;</a>&nbsp;
 				   			<a href="{$dellMethod}/?id={$user['id']}" class="rmRcrd" >&nbsp;</a>
 				   		</td>
 					</tr>
-				{/foreach}
+					{/foreach}
+					<tr>
+						<td colspan="7">
+							<form action="{$smarty.server.SCRIPT_URL}" method="get">
+								{if $prev_page['exists']}
+								<a href="{$smarty.server.SCRIPT_URL}?cp={$prev_page['page']}&pp={$smarty.get.pp}">Previous Page</a>
+								&nbsp;&nbsp;&nbsp;
+								{/if}
+								<input type="text" id="cp" name="cp" value="{$smarty.get.cp}" size="1" readonly />
+								&nbsp;&nbsp;&nbsp;
+								{if $next_page['exists']}
+								<a href="{$smarty.server.SCRIPT_URL}?cp={$next_page['page']}&pp={$smarty.get.pp}">Next Page</a>
+								&nbsp;&nbsp;&nbsp;
+								{/if}
+								{foreach from=$pp_arr item=pp}
+								<input type="radio" name="pp" value="{$pp}" {if $smarty.get.pp==$pp}checked{/if} />{$pp}
+								{/foreach}
+							</form>
+						</td>
+					</tr>
 				</tbody>
 			</table>
-			<p>&nbsp;</p>
+<!-- 		<p>&nbsp;</p>
 			<table id="flex1" style="display:none"></table>
 			<table class="ourTbl" style="display:none">
 			    <thead>
@@ -78,7 +97,7 @@
 			        <td>This is data 4</td>
 			      </tr>
 			  	</tbody>
-			</table>
+			</table> -->
 		</div>
 	</body>
 </html>
