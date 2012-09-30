@@ -17,11 +17,11 @@
 			<!-- General Style Sheet -->
 		<link rel="stylesheet" type="text/css" href="{$smarty.const.CSS_DIR}page.css" />
 			<!-- jQuery -->
-		<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.js"></script>
 			<!-- jQuery Modal Window --> 
 		<script type="text/javascript" src="{$smarty.const.JS_DIR}jqModal.js"></script>
-			<!-- jQuery Flexgrid Table -->
-		<script type="text/javascript" src="{$smarty.const.JS_DIR}flexigrid.js"></script> 
+			<!-- jQuery Sort Element Function -->
+		<script type="text/javascript" src="{$smarty.const.JS_DIR}sortElements.js"></script> 
 			<!-- Custom js -->
 		<script type="text/javascript" src="{$smarty.const.JS_DIR}page.js"></script>
 	</head>
@@ -30,19 +30,16 @@
 		<div class="tblWrap">
 		<div class="addRcrd" id="addRcrd"><a href="/smarty/page/openAddRecord" onclick="void(0)">Add User</a></div>
 		<div class="jqmWindow" id="addEditDialog">Please wait... <img src="{$smarty.const.IMG_DIR}busy.gif" alt="loading" /></div>
-			<table class="usrTbl">
-				<thead>
+	 		<table class="usrTbl">
 					<tr>
-						<th><a href="#" onclick="return false">ID#</a></th>
-						<th><a href="#" onclick="return false">Login</a></th>
-						<th><a href="#" onclick="return false">Name</a></th>
-						<th><a href="#" onclick="return false">Last Name</a></th>
-						<th><a href="#" onclick="return false">Email</a></th>
-						<th><a href="#" onclick="return false">Date of Birth</a></th>
-						<th colspan="2"><a href="#" onclick="return false">Edit | Remove</a></th>
+						<th id="id">ID#</th>
+						<th id="login">Login</th>
+						<th id="name">Name</th>
+						<th id="lastname">Last Name</th>
+						<th id="email">Email</th>
+						<th id="birthday">Date of Birth</th>
+						<th colspan="2">Edit | Remove</th>
 					</tr>
-				</thead>
-				<tbody>
 					{foreach from=$users item=user}
 					<tr class="{cycle values='oddTr, evenTr'}">
 			   			<td>{$user['id']}</td>
@@ -58,7 +55,7 @@
 					</tr>
 					{/foreach}
 					<tr>
-						<td colspan="7">
+						<td id="paginator" colspan="7">
 							<form action="{$smarty.server.SCRIPT_URL}" method="get">
 								{if $prev_page['exists']}
 								<a href="{$smarty.server.SCRIPT_URL}?cp={$prev_page['page']}&pp={$smarty.get.pp}">Previous Page</a>
@@ -76,28 +73,6 @@
 							</form>
 						</td>
 					</tr>
-				</tbody>
 			</table>
-<!-- 		<p>&nbsp;</p>
-			<table id="flex1" style="display:none"></table>
-			<table class="ourTbl" style="display:none">
-			    <thead>
-			    <tr>
-			        <th>ID</th>
-			        <th>NAME</th>
-			        <th>CATEGORY</th>
-			        <th>DATE</th>
-			      </tr>
-			  	</thead>
-			  	<tbody>
-			        <tr>
-			        <td>This is data 1 with overflowing content</td>
-			        <td>This is data 2</td>
-			        <td>This is data 3</td>
-			        <td>This is data 4</td>
-			      </tr>
-			  	</tbody>
-			</table> -->
-		</div>
 	</body>
 </html>

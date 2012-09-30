@@ -4,30 +4,25 @@ $().ready(function() {
 //		$('#addEditDialog').jqmAddTrigger('.edtRcrd');
 //		$('#addEditDialog').jqm({ajax: $('.edtRcrd').attr('href')});
 });
-/*$(document).ready(function(){
-	$("#flex1").flexigrid({
-		url: 'post2.php',
-		dataType: 'json',
-		colModel : [
-		{display: 'ISO', name : 'iso', width : 40, sortable : true, align: 'center'},
-		{display: 'Name', name : 'name', width : 180, sortable : true, align: 'left'},
-		{display: 'Printable Name', name : 'printable_name', width : 120, sortable : true, align: 'left'},
-		{display: 'ISO3', name : 'iso3', width : 130, sortable : true, align: 'left', hide: true},
-		{display: 'Number Code', name : 'numcode', width : 80, sortable : true, align: 'right'}
-		],
-		searchitems : [
-		{display: 'ISO', name : 'iso'},
-		{display: 'Name', name : 'name', isdefault: true}
-		],
-		sortname: "iso",
-		sortorder: "asc",
-		usepager: true,
-		title: 'Countries',
-		useRp: true,
-		rp: 15,
-		showTableToggleBtn: true,
-		width: 700,
-		onSubmit: addFormData,
-		height: 200
-		});
-});*/
+
+$(document).ready(function() {
+	var table = $('.usrTbl');
+	$('#id, #login, #name, #lastname, #email, #birthday')
+	.wrapInner('<span title="sort this column" />')
+	.each(function(){
+	    	var th = $(this),
+	    	thIndex = th.index(),
+	    	inverse = false;
+	    	th.click(function(){
+	    		table.find('td').not('#paginator').filter(function(){
+	    			return $(this).index() === thIndex;
+	    			}).sortElements(function(a, b){
+	    				return $.text([a]) > $.text([b]) ? inverse ? -1 : 1 : inverse ? 1 : -1;
+	    				}, function(){
+	    			// parentNode is the element we want to move
+	    					return this.parentNode;
+	    					});
+	    		inverse = !inverse;
+	    		});
+	    	});
+});

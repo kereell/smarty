@@ -112,10 +112,10 @@ class PageController extends Controller{
 
 		echo "<pre>";
 //		echo ini_get('register_globals') ? 'true' : 'false';
-		print_r($_GET);
+//		print_r($_GET);
 		echo "</pre>";
 		/** TPL DATA **/
-	//	$this->tpl->display('test.tpl.php');
+		$this->tpl->display('test.tpl.php');
 		
 	}
 	

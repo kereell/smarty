@@ -28,12 +28,12 @@ body {
 	margin: 10px auto;
 }
 	
-.usrTbl th a{
+.usrTbl th{
 	background-color: #666666;
-	display:block;
 	text-decoration: none;
 	text-transform: uppercase;
 	color:white;
+	cursor: pointer;
 }
 
 
