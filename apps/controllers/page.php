@@ -98,24 +98,42 @@ class PageController extends Controller{
 		
 	}
 	
-	public function test($cp=1, $pp=5){
+	public function test(){
 		
-			$rows = $this->mdl->getCountRows();
-				
-			/** Pagination **/
-			$paginator = new Pagination($rows, $cp, $pp);
-			$offset = $paginator->count_offset();
-			$prev_page = $paginator->previous();
-			$next_page = $paginator->next();
-			$limit = $paginator->per_page;
-			$pages = $paginator->pages;
+		
+		$this->xajax->registerFunction('myFunction');
+		
+	function myFunction($arg){
+// do some stuff based on $arg like query data from a database and
+// put it into a variable like $newContent
+$newContent = "Value of \$arg: ".$arg;
+// Instantiate the xajaxResponse object
+$objResponse = new xajaxResponse();
+ // add a command to the response to assign the innerHTML attribute of
+ // the element with id="SomeElementId" to whatever the new content is
+ $objResponse->assign("some","innerHTML", $newContent); 
+ //return theÂ  xajaxResponse object
+ return $objResponse;
+}
+
+$this->xajax->processRequest();
+
+$this->xajax->printJavascript('../../');
+
+echo '<div id="some">&nbsp;</div>';
+echo '<form name="frm" action="" method="post" /><br />';
+echo '<input type="text" id="test" name="nameTest" /><br />';
+echo '<input type="button" name="BURN IT!" onclick="xajax_myFunction(\'It worked!\')" />';
+
+
+
 
 		echo "<pre>";
 //		echo ini_get('register_globals') ? 'true' : 'false';
 //		print_r($_GET);
 		echo "</pre>";
 		/** TPL DATA **/
-		$this->tpl->display('test.tpl.php');
+///		$this->tpl->display('test.tpl.php');
 		
 	}
 	

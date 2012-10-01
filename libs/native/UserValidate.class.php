@@ -14,15 +14,15 @@ class UserValidate {
 	
 		if(!$login){
 				
-			throw new validExeption('login_empty');
+			throw new ValidExeption('login_empty');
 				
 		} elseif(!preg_match('/^[a-z0-9\_\@\-\$]{1,20}$/si', $login)){
 				
-			throw new validExeption('login_restricted');
+			throw new ValidExeption('login_restricted');
 				
 		} elseif ($this->userData->isExist('login', $login)){
 	
-			throw new validExeption('login_exists');
+			throw new ValidExeption('login_exists');
 		}
 	
 		return $login;
@@ -33,15 +33,15 @@ class UserValidate {
 	
 		if(!$name){
 	
-			throw new validExeption('name_empty');
+			throw new ValidExeption('name_empty');
 	
 		} elseif(!preg_match('/^[a-z]{1,20}$/si', $name)){
 	
-			throw new validExeption('name_restricted');
+			throw new ValidExeption('name_restricted');
 	
 		} elseif ($name==$lastname){
 				
-			throw new validExeption('name_equal_lastname');
+			throw new ValidExeption('name_equal_lastname');
 				
 		}
 	
@@ -53,15 +53,15 @@ class UserValidate {
 	
 		if(!$email){
 	
-			throw new validExeption('email_empty');
+			throw new ValidExeption('email_empty');
 	
 		} elseif(!filter_var($email,FILTER_VALIDATE_EMAIL)){
 	
-			throw new validExeption('email_restricted');
+			throw new ValidExeption('email_restricted');
 	
 		} elseif ($this->userData->isExist('email', $email)){
 	
-			throw new validExeption('email_exists');
+			throw new ValidExeption('email_exists');
 		}
 	
 		return $email;
@@ -72,11 +72,11 @@ class UserValidate {
 	
 		if(!($passwd || $rePasswd)){
 	
-			throw new validExeption('passwd_empty');
+			throw new ValidExeption('passwd_empty');
 	
 		} elseif ($passwd!=$rePasswd){
 				
-			throw new validExeption('passwd_not_equal_rePasswd');
+			throw new ValidExeption('passwd_not_equal_rePasswd');
 				
 		}
 	
@@ -90,11 +90,11 @@ class UserValidate {
 	
 		if(!$birth){
 	
-			throw new validExeption('birth_empty');
+			throw new ValidExeption('birth_empty');
 	
 		} elseif(!preg_match('/^\d{2}\-\d{2}\-\d{4}$/s', $birth)){
 	
-			throw new validExeption('bitrh_restricted');
+			throw new ValidExeption('bitrh_restricted');
 	
 		}
 	
@@ -108,11 +108,11 @@ class UserValidate {
 		
 		if(!$this->userData->isExist('id', $id)){
 			
-			throw new validExeption('id_not_exists');
+			throw new ValidExeption('id_not_exists');
 			
 		} elseif ($id < 10) {
 			
-			throw new validExeption('E456');
+			throw new ValidExeption('E456');
 			
 		}
 		
