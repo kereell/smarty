@@ -31,8 +31,8 @@ body {
 .addEditFrm div {
 	display: table-row;
 }
-
-.addEditFrm span, input {
+ 
+.addEditFrm span, .addEditFrm input {
 	float: left;
 	display: table-cell;
 	width: 170px;
@@ -53,11 +53,12 @@ body {
 .addEditFrm #sBtn {
 	margin-right: -170px;
 	width:380px;
-	background-color: #336633;
 	border: 3px outset #330033;
-	text-transform:uppercase;
-	color: white;
-	font-weight: bold;
+	background-color: #006600;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-weight:bold;
+	color:white;
 	font-family: Verdana;
 	font-size: 14px;
 }

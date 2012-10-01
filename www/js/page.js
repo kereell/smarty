@@ -1,11 +1,46 @@
-$().ready(function() {
-		$('#addEditDialog').jqm({modal: true, trigger: '.addRcrd a'});
-		$('#addEditDialog').jqm({ajax: $('.addRcrd a').attr('href')});
-//		$('#addEditDialog').jqmAddTrigger('.edtRcrd');
-//		$('#addEditDialog').jqm({ajax: $('.edtRcrd').attr('href')});
-});
+function confirm(msg,callback) {
+  $('#confirm')
+    .jqmShow()
+    .find('p.jqmConfirmMsg')
+      .html(msg)
+    .end()
+    .find(':submit:visible')
+      .click(function(){
+        if(this.value == 'yes')
+          (typeof callback == 'string') ?
+            window.location.href = callback :
+            callback();
+        $('#confirm').jqmHide();
+      });
+}
 
-$(document).ready(function() {
+/** Add or Edit JQM**/
+$().ready(function() {
+		$('#addEditDialog').jqm({
+			modal: true,
+			overlay: 0,
+			onShow: function(h) {
+		        h.w.css('opacity',0.90).delay(250).slideDown(); 
+		        },
+	        onHide: function(h) {
+	            h.w.slideUp("slow", function() { if(h.o) h.o.remove(); }); 
+	            }, 
+			ajax: '@href',
+			ajaxHTML: 'Loading...'
+				});
+		$('#addEditDialog').jqmAddTrigger('.addRcrd a');
+		$('#addEditDialog').jqmAddTrigger('.edtRmRcrd a:first-child');
+
+		/** Confirm Delete JQM **/
+		$('#confirm').jqm({overlay: 88, modal: true, trigger: false});
+	  // trigger a confirm whenever links of class alert are pressed.
+		$('.edtRmRcrd a:last-child').click(function() { 
+	    confirm('Are you about to delete user with id: '+this.id+' ?!',this.href); 
+	    return false;
+	  });
+
+
+	/** SORTING**/
 	var table = $('.usrTbl');
 	$('#id, #login, #name, #lastname, #email, #birthday')
 	.wrapInner('<span title="sort this column" />')
@@ -19,7 +54,6 @@ $(document).ready(function() {
 	    			}).sortElements(function(a, b){
 	    				return $.text([a]) > $.text([b]) ? inverse ? -1 : 1 : inverse ? 1 : -1;
 	    				}, function(){
-	    			// parentNode is the element we want to move
 	    					return this.parentNode;
 	    					});
 	    		inverse = !inverse;

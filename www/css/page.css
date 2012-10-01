@@ -1,4 +1,5 @@
 @CHARSET "UTF-8";
+
 body {
 	background-color: #999999;
 	color: #333333;
@@ -16,26 +17,32 @@ body {
 
 }
 
-.tblWrap{
+.tblWrap {
 	margin: 10px auto;
 	width:700px;
 }
 
 .usrTbl {
-	border: 3px outset #330033;
+	border: 3px outset #666666;
 	width: 700px;
 	text-align: center;
-	margin: 10px auto;
+	margin: 5px auto;
 }
 	
-.usrTbl th{
+.usrTbl th {
 	background-color: #666666;
 	text-decoration: none;
 	text-transform: uppercase;
 	color:white;
+}
+
+.usrTbl th:NOT(:LAST-OF-TYPE) {
 	cursor: pointer;
 }
 
+.usrTbl th:NOT(:LAST-OF-TYPE):HOVER {
+	background-color: #333333;
+}
 
 .usrTbl td {
 	font-size: 13px;
@@ -55,20 +62,20 @@ body {
 
 .addRcrd a{
 	display: block;
-	background-color: #336633;
+	background-color: #006600;;
 	text-align: center;
 	text-transform:uppercase;
 	text-decoration:none;
 	color: white;
 	font-weight: bold;
-	margin: 10px auto;
+	margin: 5px auto;
 	width: 300px;
 	border: 3px outset #330033;
-
+	border-radius: 20px;
 }
 
 .addRcrd a:HOVER{
-	background-color: #669966;
+	background-color: #339900;
 }
 
 .email a{
@@ -83,15 +90,70 @@ body {
 	width: 16px;
 	margin: 1px 15px;
 }
-.edtRcrd {
-	
+
+.edtRmRcrd a:FIRST-CHILD {	
 	background: url("../img/edit.png") no-repeat;
 }
 
-.rmRcrd {
+.edtRmRcrd a:LAST-CHILD {
 	background: url("../img/remove.png") no-repeat;
 }
 
-.usrRslt{
-	
+#paginator {
+	height: 10px;
+}
+
+#paginate_wrap {
+	display: block;
+	width:650px;
+}
+
+#cur_page {
+	width: 65px;
+	text-align: center;
+	background: buttonface;
+}
+
+#paginator a {
+	display:inline-block; 
+	background-color: #006600;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-weight:bold;
+	color:white;	
+}
+
+#paginator a:FIRST-OF-TYPE {
+	white-space:nowrap;
+	width:160px;
+	border-radius: 20px;
+	margin-left: 5px;
+}
+
+#paginator a:FIRST-OF-TYPE:HOVER {
+	 background-color: #339900;
+}
+
+#paginator a:LAST-OF-TYPE {
+	white-space:nowrap;
+	width:110px;
+	border-radius: 20px;
+}
+
+#paginator a:LAST-OF-TYPE:HOVER {
+	background-color: #339900;
+}
+
+.pBtn {
+	background-color: #006600;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-weight:bold;
+	color:white;	
+	border:0;
+	border-radius: 20px;
+}
+
+.pBtn:HOVER {
+	background-color: #339900;
 }
