@@ -99,7 +99,7 @@ function callHook() {
 	
 function autoloader($className) {
 	
-	if(!strstr($className, 'Smarty')){
+	if(!(strstr($className, 'Smarty') || strstr($className, 'ajax'))){
 		
 		if(file_exists(LIB_DIR.$className.'.class.php')){
 

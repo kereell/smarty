@@ -117,13 +117,15 @@ $objResponse = new xajaxResponse();
 }
 
 $this->xajax->processRequest();
+//echo file_exists(XAJAX_DIR.'xajax_js/xajax_core.js') ? 'TRUE' : 'FALSE';
+$this->xajax->configure('javascript URI', XAJAX_DIR);
 
-$this->xajax->printJavascript('../../');
+$this->xajax->printJavascript();
 
 echo '<div id="some">&nbsp;</div>';
 echo '<form name="frm" action="" method="post" /><br />';
 echo '<input type="text" id="test" name="nameTest" /><br />';
-echo '<input type="button" name="BURN IT!" onclick="xajax_myFunction(\'It worked!\')" />';
+echo '<input type="button" name="btn" value="BURN IT!" onclick="xajax_myFunction(\'It worked!\')" />';
 
 
 
