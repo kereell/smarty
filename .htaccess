@@ -2,9 +2,12 @@
 	
 	RewriteEngine on
 	
+	RewriteCond %{DOCUMENT_ROOT} !-f
+	
 	RewriteBase /smarty/
     
     RewriteRule	^$	www/	[L]
     RewriteRule	(.*) www/$1	[L]
-
+	RewriteRule !\.(js|ico|gif|jpg|png|css|html|swf|flv|xml)$ www/ [QSA,L]
+	
 </IfModule>
