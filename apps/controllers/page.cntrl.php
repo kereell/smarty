@@ -1,6 +1,6 @@
 <?php
 
-class PageController extends Controller{
+class PageCntrl extends Controller{
 	
 	public function index($cp=1, $pp=5){
 
@@ -94,48 +94,22 @@ class PageController extends Controller{
 		
 	}
 	
-	public function _buildTable(){
+	public function buildTable(){
 		
+		$ajax = new JsHttpRequest('utf8');
+		
+		$GLOBALS['_RESULT'] = array(
+				'one' => 'hello'
+				);
 	}
 	
 	public function test(){
-		
-		
-		$this->xajax->registerFunction('myFunction');
-		
-	function myFunction($arg){
-// do some stuff based on $arg like query data from a database and
-// put it into a variable like $newContent
-$newContent = "Value of \$arg: ".$arg;
-// Instantiate the xajaxResponse object
-$objResponse = new xajaxResponse();
- // add a command to the response to assign the innerHTML attribute of
- // the element with id="SomeElementId" to whatever the new content is
- $objResponse->assign("some","innerHTML", $newContent); 
- //return theÂ  xajaxResponse object
- return $objResponse;
-}
 
-$this->xajax->processRequest();
-//echo file_exists(XAJAX_DIR.'xajax_js/xajax_core.js') ? 'TRUE' : 'FALSE';
-$this->xajax->configure('javascript URI', XAJAX_DIR);
-
-$this->xajax->printJavascript();
-
-echo '<div id="some">&nbsp;</div>';
-echo '<form name="frm" action="" method="post" /><br />';
-echo '<input type="text" id="test" name="nameTest" /><br />';
-echo '<input type="button" name="btn" value="BURN IT!" onclick="xajax_myFunction(\'It worked!\')" />';
-
-
-
-
-		echo "<pre>";
-//		echo ini_get('register_globals') ? 'true' : 'false';
+//		echo "<pre>";
 //		print_r($_GET);
-		echo "</pre>";
+//		echo "</pre>";
 		/** TPL DATA **/
-///		$this->tpl->display('test.tpl.php');
+		$this->tpl->display('test.tpl.php');
 		
 	}
 	

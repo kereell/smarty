@@ -1,6 +1,6 @@
 <?php
 
-class PageModel extends Model {
+class PageMdl extends Model {
 	
 	public function __construct() {
 

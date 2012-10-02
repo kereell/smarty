@@ -8,6 +8,5 @@
     
     RewriteRule	^$	www/	[L]
     RewriteRule	(.*) www/$1	[L]
-	RewriteRule !\.(js|ico|gif|jpg|png|css|html|swf|flv|xml)$ www/ [QSA,L]
 	
 </IfModule>

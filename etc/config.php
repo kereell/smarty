@@ -28,9 +28,8 @@ define('CSS_DIR', DS.'smarty'.DS.'css'.DS);
 define('IMG_DIR', DS.'smarty'.DS.'img'.DS);
 define('JS_DIR', DS.'smarty'.DS.'js'.DS);
 
-/** XAJAX DIR **/
-define('XAJAX_DIR', ROOT.DS.'libs'.DS.'xajax'.DS);
+/** JS HTTP REQUEST DIR **/
+define('JS_HTTP_REQUEST_DIR', ROOT.DS.'libs'.DS.'jsHttpRequest'.DS);
 
 /** SMARTY DIR **/
 define('SMARTY_DIR', ROOT.DS.'libs'.DS.'smarty'.DS);
-

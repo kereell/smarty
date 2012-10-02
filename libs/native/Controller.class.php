@@ -1,24 +1,16 @@
 <?php
 
-require_once(XAJAX_DIR.'xajax_core'.DS.'xajax.inc.php');
-require_once(SMARTY_DIR.'Smarty.class.php');
-
 class Controller {
 
 	protected $_action;
 	protected $mdl;
-	
 	protected $tpl;
-	protected $xajax;
 
 	function __construct($model, $action) {
 		
 			/** Controller properties **/
 		$this->_action = $action;
 		$this->mdl = new $model();	
-		
-			/** XAJAX **/
-		$this->xajax = new xajax();
 		
 			/** TPL SMARTY**/
 		$this->tpl = new Smarty();

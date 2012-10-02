@@ -6,7 +6,7 @@ class UserValidate {
 	
 	public function __construct(){
 		
-		 $this->userData = new PageModel();
+		 $this->userData = new PageMdl();
 		
 	}
 	

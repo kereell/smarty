@@ -9,6 +9,8 @@ RewriteBase /smarty/www/
 RewriteCond	%{REQUEST_FILENAME} !-f
 RewriteCond	%{REQUEST_FILENAME} !-d
 
+#RewriteRule !.(js|ico|gif|jpg|png|css|html|swf|flv|xml)$ index.php [QSA,L]
 RewriteRule	^(.*)$	index.php	[PT,L]
+
 
 </IfModule>
