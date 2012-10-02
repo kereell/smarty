@@ -29,6 +29,7 @@
 	<body>
 	
 		<div class="title">{$title}</div>
+		<!-- <div id="response">&nbsp;</div> -->
 		<div class="jqmdX jqmClose">&nbsp;</div>
 		<form class="addEditFrm" name="addEditFrm" action="{$actMethod}" method="post">
 		<div><span>Login</span><input type="text" id="login" name="login" value="{$login}" autocomplete="off" placeholder="Put Your Login" /></div>
@@ -38,7 +39,7 @@
 		<div><span>Password</span><input type="password" id="pass" name="pass" autocomplete="off" placeholder="Put Your Password" /></div>
 		<div><span>Re-Enter Password</span><input type="password" id="rePass" name="rePass" autocomplete="off" placeholder="Repeat Your Password" /></div>
 		<div><span>Birthday</span><input type="text" id="birthday" name="birthday" value="{$birthday}" autocomplete="off" placeholder="Put Your Birthday" /></div>
-		<div><input type="submit" id="sBtn" name="sBtn" value="{$sBtnVal}" ></div>
+		<div><input type="button" id="sBtn" name="sBtn" value="{$sBtnVal}" onclick="processLoad(this.form)" ></div>
 		</form>
 	</body>
 </html>

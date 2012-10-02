@@ -2,7 +2,7 @@
 
 setReporting();
 removeMagicQuotes();
-unregisterGlobals();
+//unregisterGlobals();
 spl_autoload_register('new_autoloader');
 callHook();
 

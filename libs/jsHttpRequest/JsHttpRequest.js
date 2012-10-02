@@ -281,7 +281,7 @@ var r=window.JsHttpRequest_tmp(id);
 window.JsHttpRequest_tmp=null;
 return r;
 };
-JsHttpRequest.query=function(url,_35,_36,_37){
+JsHttpRequest.query=function(url,_35,_36,_method,_37){
 var req=new this();
 req.caching=!_37;
 req.onreadystatechange=function(){
@@ -289,7 +289,7 @@ if(req.readyState==4){
 _36(req.responseJS,req.responseText);
 }
 };
-req.open(null,url,true);
+req.open(_method,url,true);
 req.send(_35);
 };
 JsHttpRequest.dataReady=function(d){

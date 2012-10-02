@@ -1,3 +1,16 @@
+function processLoad(values){
+	JsHttpRequest.query(
+			'/smarty/page/_processAddRecord', 
+			{'q':values}, 
+			function(res,err){ 
+				alert('hi');
+				$('#response').html(res);
+				$('#error').html(err);
+			},
+			'GET',
+			true
+			);
+}
 function confirm(msg,callback) {
   $('#confirm')
     .jqmShow()

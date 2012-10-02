@@ -32,7 +32,7 @@ class PageCntrl extends Controller{
 	}
 	
 
-	public function openAddRecord(){
+	public function _openAddRecord(){
 		
 			/** TPL DATA **/
  		$this->tpl->assign('title', 'Add User');
@@ -49,7 +49,7 @@ class PageCntrl extends Controller{
 
 	}
 	
-	public function openEditRecord($id){
+	public function _openEditRecord($id){
 		
 			/** Getting Data **/
 		$user = $this->mdl->getUser($id);
@@ -71,9 +71,14 @@ class PageCntrl extends Controller{
 	
 	public function _processAddRecord(){
 		
-		$added = $this->mdl->setUser($_POST);
+		$ajax = new JsHttpRequest('utf8');
 		
-		$this->_redirect('/smarty/page');
+		$GLOBALS['_RESULT'] = print_r($_GET, TRUE);
+		
+		echo 'test';
+	//	$added = $this->mdl->setUser($_GET);
+		
+//		$this->_redirect('/smarty/page');
 		
 		
 	}
@@ -98,9 +103,12 @@ class PageCntrl extends Controller{
 		
 		$ajax = new JsHttpRequest('utf8');
 		
-		$GLOBALS['_RESULT'] = array(
+		$GLOBALS['_RESULT'] = print_r($_GET, TRUE);
+		
+		echo 'test';
+		/* array(
 				'one' => 'hello'
-				);
+				); */
 	}
 	
 	public function test(){

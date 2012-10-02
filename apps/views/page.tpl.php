@@ -21,7 +21,9 @@
 			<!-- jQuery Modal Window --> 
 		<script type="text/javascript" src="{$smarty.const.JS_DIR}jqModal.js"></script>
 			<!-- jQuery Sort Element Function -->
-		<script type="text/javascript" src="{$smarty.const.JS_DIR}sortElements.js"></script> 
+		<script type="text/javascript" src="{$smarty.const.JS_DIR}sortElements.js"></script>
+			<!-- JsHttpRequest --> 
+		<script type="text/javascript" src="/smarty/libs/jsHttpRequest/JsHttpRequest.js"></script> 
 			<!-- Custom js -->
 		<script type="text/javascript" src="{$smarty.const.JS_DIR}page.js"></script>
 	</head>
@@ -43,13 +45,14 @@
 			</div>
 		</div>
 	</div>
+	<div id="response">&nbsp;</div>
 		<div class="tblWrap">
 			<!-- Add or Edit JQM Dialog -->
-		<div class="addRcrd"><a href="/smarty/page/openAddRecord">Add User</a></div>
+		<div class="addRcrd"><a href="/smarty/page/_openAddRecord">Add User</a></div>
 		<div class="jqmWindow" id="addEditDialog">&nbsp;</div>
 	 		<table class="usrTbl">
 					<tr>
-						<th id="id">ID#</th>
+						<th id="id" onclick="processLoad('hello')">ID#</th>
 						<th id="login">Login</th>
 						<th id="name">Name</th>
 						<th id="lastname">Last Name</th>
@@ -66,7 +69,7 @@
 			   			<td class="email">{mailto address="{$user['email']}" encode="javascript"}</td>
 			   			<td>{$user['birthday']}</td>
 			   			<td class="edtRmRcrd">
-				   			<a href="/smarty/page/openEditRecord?id={$user['id']}">&nbsp;</a>&nbsp;
+				   			<a href="/smarty/page/_openEditRecord?id={$user['id']}">&nbsp;</a>&nbsp;
 				   			<a href="{$dellMethod}/?id={$user['id']}" id="{$user['id']}">&nbsp;</a>
 				   		</td>
 					</tr>
