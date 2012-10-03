@@ -72,23 +72,16 @@ class PageCntrl extends Controller{
 	public function _processAddRecord(){
 		
 		$ajax = new JsHttpRequest('utf8');
-		
-		$GLOBALS['_RESULT'] = print_r($_GET, TRUE);
-		
-		echo 'test';
-	//	$added = $this->mdl->setUser($_GET);
-		
-//		$this->_redirect('/smarty/page');
-		
-		
+		$GLOBALS['_RESULT'] = $this->mdl->setUser($_GET);
+	
 	}
 	
-	public function _processEditRecord($id){
+	public function _processEditRecord(){
 		
-		$affected = $this->mdl->editUser($id, $_POST);
-		
-		$this->_redirect('/smarty/page');
-		
+		$ajax = new JsHttpRequest('utf8');
+		$id = array_pop($_GET);
+		$GLOBALS['_RESULT'] = $this->mdl->editUser($id, $_GET);
+//		$this->_redirect('/smarty/page');	
 	}
 	
 	public function _processDeleteRecord($id){

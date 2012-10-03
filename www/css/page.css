@@ -17,6 +17,13 @@ body {
 
 }
 
+.response {
+	display:none;
+	color: #006600;
+	font-weight: bold;
+	text-align: center;
+}
+
 .tblWrap {
 	margin: 10px auto;
 	width:700px;
@@ -62,7 +69,7 @@ body {
 
 .addRcrd a{
 	display: block;
-	background-color: #006600;;
+	background-color: #006600;
 	text-align: center;
 	text-transform:uppercase;
 	text-decoration:none;
@@ -156,4 +163,111 @@ body {
 
 .pBtn:HOVER {
 	background-color: #339900;
+}
+/** AddEditForm **/
+.badWords {
+	display: none;
+	width: 90%;
+	padding: 5px;
+	text-transform: uppercase;
+	font-weight: bold;
+	color: red;	
+}
+
+.addEditFrm {
+	display: table;
+	width: 390px;
+	margin: 10px auto;
+	border: 3px outset #330033;
+	padding: 7px;
+	background-color: #666666;
+	color: white;
+	font-weight: bold;
+}
+
+.addEditFrm div {
+	display: table-row;
+}
+ 
+.addEditFrm span, .addEditFrm input {
+	float: left;
+	display: table-cell;
+	width: 170px;
+	margin: 7px 5px;
+	font-family: Verdana;
+	font-size: 13px;	
+}
+
+.addEditFrm span {
+	text-align: left;
+}
+
+.addEditFrm input {
+	text-align: center;
+}
+
+.addEditFrm #sBtn {
+	margin-right: -170px;
+	width:380px;
+	border: 3px outset #330033;
+	background-color: #006600;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-weight:bold;
+	color:white;
+	font-family: Verdana;
+	font-size: 14px;
+}
+
+.addEditFrm #sBtn:HOVER {
+	background-color: #669966;
+	cursor: pointer;
+}
+
+.done {
+	float: left;
+	width: 16px;
+	height: 16px;
+	padding: 0;
+	margin: 10px 3px 0;
+	display: block;
+	text-indent: -2000px;
+	overflow: hidden;
+	background: url(../img/done.png) no-repeat;
+}
+
+.error {
+	float: left;
+	width: 16px;
+	height: 16px;
+	padding: 0;
+	margin: 10px 3px 0;
+	display: block;
+	text-indent: -2000px;
+	overflow: hidden;
+	background: url(../img/error.png) no-repeat;
+}
+
+/** Data picker **/
+a.dp-choose-date {
+	float: left;
+	width: 16px;
+	height: 16px;
+	padding: 0;
+	margin: 10px 3px 0;
+	display: block;
+	text-indent: -2000px;
+	overflow: hidden;
+	background: url(../img/calendar.png) no-repeat; 
+}
+a.dp-choose-date.dp-disabled {
+	background-position: 0 -20px;
+	cursor: default;
+}
+/* makes the input field shorter once the date picker code
+ * has run (to allow space for the calendar icon
+ */
+input.dp-applied {
+	width: 140px;
+	float: left;
 }

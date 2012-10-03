@@ -15,7 +15,7 @@ class ValidExeption extends Exception {
 	private function getError($type){
 		
 		switch ($type){
-			
+		
 			case 'login_empty':
 				$this->message = 'Login can NOT be empty!';
 				break;
@@ -26,6 +26,9 @@ class ValidExeption extends Exception {
 				break;
 			case 'login_exists':
 				$this->message = 'Such login already taken!';
+				break;
+			case 'login_not_editable':
+				$this->message = 'Sorry but you not allowed to change your login!';
 				break;
 				
 			case 'name_empty':

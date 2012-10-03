@@ -1,15 +1,13 @@
 $(document).ready(function(){
-	Date.firstDayOfWeek = 0;
-	Date.format = 'dd-mm-yyyy';
-	$('#birthday').datePicker(
-			{
+		 Date.firstDayOfWeek = 0;
+			Date.format = 'dd-mm-yyyy';
+			$('#birthday').datePicker({
 				clickInput:true,
 				startDate: '01-01-1940',
-				endDate: (new Date()).asString()
-			}
-		);
+				endDate: (new Date()).asString()});
+	
 	/** TODO Make stronger Validation **/
-/*	$('.addEditFrm input').blur(function validInput(){
+	$('.addEditFrm input').blur(function validInput(){
 		switch(this.id){
 		case 'login':
 		case 'name':
@@ -91,12 +89,12 @@ $(document).ready(function(){
 			break;
 		}
 	});
-	$('#sBtn').focus(function(){
+	$('#sBtn').click(function(){
 		if($('div').is('.error') || $('.addEditFrm input').not('#sBtn').val()==''){
-			alert('There is an error');
+			//** PUNISH BASTARDS FOR INCORRECT INPUT **//
 		} else {
-			*//** some code here **//*
+			//** some code here **//
 			}
-	});*/
+	});
 	
 });

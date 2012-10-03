@@ -1,15 +1,18 @@
-function processLoad(values){
+
+function procAddEdtRcrd(values){
 	JsHttpRequest.query(
-			'/smarty/page/_processAddRecord', 
+			$('#addEditFrm').attr('action'), 
 			{'q':values}, 
 			function(res,err){ 
-				alert('hi');
-				$('#response').html(res);
-				$('#error').html(err);
+				if(err){
+					$('#badWords').show('slow').html(err).delay(3000).fadeOut('slow');
+					} else {
+						$('#addEditDialog').jqmHide(); 
+						$('#response').show('slow').html(res).delay(4000).fadeOut('slow');
+					}
 			},
 			'GET',
-			true
-			);
+			true);
 }
 function confirm(msg,callback) {
   $('#confirm')
@@ -28,15 +31,17 @@ function confirm(msg,callback) {
 }
 
 /** Add or Edit JQM**/
-$().ready(function() {
+$(document).ready(function() {
 		$('#addEditDialog').jqm({
 			modal: true,
 			overlay: 0,
 			onShow: function(h) {
-		        h.w.css('opacity',0.90).delay(250).slideDown(); 
+		        h.w.css('opacity',0.90).delay(280).slideDown();
 		        },
 	        onHide: function(h) {
-	            h.w.slideUp("slow", function() { if(h.o) h.o.remove(); }); 
+	            h.w.slideUp("slow", function() { 
+	            	if(h.o) h.o.remove(); 
+	            }); 
 	            }, 
 			ajax: '@href',
 			ajaxHTML: 'Loading...'
@@ -52,10 +57,9 @@ $().ready(function() {
 	    return false;
 	  });
 
-
 	/** SORTING**/
 	var table = $('.usrTbl');
-	$('#id, #login, #name, #lastname, #email, #birthday')
+	$('#idTh, #loginTh, #nameTh, #lastnameTh, #emailTh, #birthdayTh')
 	.wrapInner('<span title="sort this column" />')
 	.each(function(){
 	    	var th = $(this),
